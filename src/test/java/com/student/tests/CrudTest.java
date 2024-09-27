@@ -12,12 +12,13 @@ public class CrudTest {
     @Test
     public void test(){
 
-        RestAssured.baseURI ="http://localhost:8000/api/routes";
+        RestAssured.baseURI ="http://localhost/api";
+        RestAssured.port = 8000;
 
 
         RestAssured.given()
                 .when()
-                .get()
+                .get("/routes")
                 .then()
                 .log()
                 .body()
