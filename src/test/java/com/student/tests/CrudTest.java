@@ -19,6 +19,8 @@ public class CrudTest {
                 .when()
                 .get()
                 .then()
+                .log()
+                .body()
                 .statusCode(200);
 
     }
