@@ -11,10 +11,30 @@
   <url>http://maven.apache.org</url>
 
   <properties>
+    <aspectj.version>1.9.21</aspectj.version>
     <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
+    <allure.version>2.25.0</allure.version>
     <maven.compiler.source>19</maven.compiler.source>
     <maven.compiler.target>19</maven.compiler.target>
   </properties>
+
+  <dependencyManagement>
+    <dependencies>
+      <dependency>
+        <groupId>io.qameta.allure</groupId>
+        <artifactId>allure-bom</artifactId>
+        <version>${allure.version}</version>
+        <type>pom</type>
+        <scope>import</scope>
+      </dependency>
+
+      <dependency>
+        <groupId>io.qameta.allure</groupId>
+        <artifactId>allure-junit4</artifactId>
+        <scope>test</scope>
+      </dependency>
+    </dependencies>
+  </dependencyManagement>
 
   <dependencies>
     <!-- https://mvnrepository.com/artifact/io.rest-assured/rest-assured -->
@@ -30,6 +50,10 @@
       <version>4.10</version>
       <scope>test</scope>
     </dependency>
-
+    <!-- Add necessary Allure dependencies to dependencies section -->
   </dependencies>
+
+
+
+
 </project>
