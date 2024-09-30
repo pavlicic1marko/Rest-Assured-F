@@ -11,7 +11,7 @@ import org.junit.Test;
  * Unit test for simple App.
  */
 @Story("get routes for microservice")
-public class CrudTest {
+public class CrudTest extends  TestBase{
 
     @Story("get routes for microservice")
     @DisplayName("Test Name")
@@ -19,8 +19,7 @@ public class CrudTest {
     @Test
     public void test(){
 
-        RestAssured.baseURI ="http://localhost/api";
-        RestAssured.port = 8000;
+
 
 
         RestAssured.given()
