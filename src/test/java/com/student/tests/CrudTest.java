@@ -7,9 +7,7 @@ import io.qameta.allure.Story;
 import io.qameta.allure.junit4.DisplayName;
 import org.junit.Test;
 
-/**
- * Unit test for simple App.
- */
+
 @Story("get routes for microservice")
 public class CrudTest extends  TestBase{
 
@@ -21,7 +19,7 @@ public class CrudTest extends  TestBase{
     @Test
     public void getAllUsers(){
 
-        requestFactory.getAllStudents().then().log().all().statusCode(200);
+        requestFactory.getAllUsers().then().log().all().statusCode(200);
     }
 
 
@@ -30,7 +28,7 @@ public class CrudTest extends  TestBase{
     @Feature("Feature name")
     @Test
     public void createUser(){
-        requestFactory.postNewStudent().then().log().all().statusCode(200);
+        requestFactory.registerUser().then().log().all().statusCode(200);
     }
 }
 
