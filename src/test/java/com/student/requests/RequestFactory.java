@@ -16,7 +16,7 @@ public class RequestFactory extends TestBase {
     @Step("get all student information")
     public Response getAllUsers(){
 
-        return RestAssured.given().header("Authorization", "Bearer "+ token)
+        return RestAssured.given().header("Authorization", "Bearer "+ access_token)
                 .when()
                 .get("/users");
     }
