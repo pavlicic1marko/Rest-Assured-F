@@ -10,9 +10,9 @@ public class RequestFactory extends TestBase {
     @Step("get all student information")
     public Response getAllStudents(){
 
-        return RestAssured.given()
+        return RestAssured.given().header("Authorization", "Bearer "+ token)
                 .when()
-                .get("/routes");
+                .get("/users");
 
     }
 }
