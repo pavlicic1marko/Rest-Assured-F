@@ -20,7 +20,7 @@ public class RequestFactory extends TestBase {
 
         return RestAssured.given()
                 .contentType("multipart/form-data")
-                .multiPart("email", "testt1231@test.com")
+                .multiPart("email", "testt12314@test.com")
                 .multiPart("password", "12345678")
                 .multiPart("name", "test")
                 .when()
