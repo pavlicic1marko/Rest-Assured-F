@@ -13,6 +13,18 @@ public class RequestFactory extends TestBase {
         return RestAssured.given().header("Authorization", "Bearer "+ token)
                 .when()
                 .get("/users");
-
     }
+
+    @Step("Register a student")
+    public Response postNewStudent(){
+
+        return RestAssured.given()
+                .contentType("multipart/form-data")
+                .multiPart("email", "testt1231@test.com")
+                .multiPart("password", "12345678")
+                .multiPart("name", "test")
+                .when()
+                .post("/users/register");
+    }
+
 }

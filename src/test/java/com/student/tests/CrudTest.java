@@ -19,13 +19,18 @@ public class CrudTest extends  TestBase{
     @DisplayName("Test Name")
     @Feature("Feature name")
     @Test
-    public void test(){
+    public void getAllUsers(){
 
         requestFactory.getAllStudents().then().log().all().statusCode(200);
+    }
 
 
-
-
+    @Story("create a student")
+    @DisplayName("Test Name")
+    @Feature("Feature name")
+    @Test
+    public void createUser(){
+        requestFactory.postNewStudent().then().log().all().statusCode(200);
     }
 }
 
