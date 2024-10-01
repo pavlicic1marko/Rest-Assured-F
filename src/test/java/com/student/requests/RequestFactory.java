@@ -8,19 +8,19 @@ import io.restassured.response.Response;
 public class RequestFactory extends TestBase {
 
     @Step("get all student information")
-    public Response getAllStudents(){
+    public Response getAllUsers(){
 
-        return RestAssured.given().header("Authorization", "Bearer "+ token)
+        return RestAssured.given().header("Authorization", "Bearer "+ access_token)
                 .when()
                 .get("/users");
     }
 
     @Step("Register a student")
-    public Response postNewStudent(){
+    public Response registerUser(){
 
         return RestAssured.given()
                 .contentType("multipart/form-data")
-                .multiPart("email", "testt1231@test.com")
+                .multiPart("email", "testt12314@test.com")
                 .multiPart("password", "12345678")
                 .multiPart("name", "test")
                 .when()
