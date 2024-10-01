@@ -14,8 +14,7 @@ public class RequestFactory extends TestBase {
 
 
     @Step("get all student information")
-    public Response getAllStudents(){
-
+    public Response getAllUsers(){
 
         return RestAssured.given().header("Authorization", "Bearer "+ token)
                 .when()
@@ -23,7 +22,7 @@ public class RequestFactory extends TestBase {
     }
 
     @Step("Register a student")
-    public Response postNewStudent(){
+    public Response registerUser(){
 
         return RestAssured.given()
                 .contentType("multipart/form-data")
