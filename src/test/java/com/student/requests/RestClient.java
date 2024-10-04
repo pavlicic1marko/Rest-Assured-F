@@ -1,5 +1,6 @@
 package com.student.requests;
 
+import com.student.specs.SpecificationFactory;
 import com.student.tests.TestBase;
 import io.restassured.RestAssured;
 import io.restassured.http.ContentType;
@@ -7,9 +8,13 @@ import io.restassured.response.Response;
 
 public class RestClient extends TestBase {
 
+    //RequestFactory requestFactory = new RequestFactory();
+
+
     public Response doGetRequest(String requestPath){
 
         return RestAssured.given().header("Authorization", "Bearer "+ access_token)
+                .spec(SpecificationFactory.logPayloadResponseInfo())
                 .when()
                 .get(requestPath);
     }
@@ -18,6 +23,7 @@ public class RestClient extends TestBase {
 
         return RestAssured.given()
                 .contentType(ContentType.JSON)
+               //.spec(SpecificationFactory.logPayloadResponseInfo())
                 .when()
                 .body(body)
                 .post(path);
