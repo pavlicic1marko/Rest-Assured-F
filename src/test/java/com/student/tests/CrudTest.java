@@ -8,6 +8,7 @@ import com.student.tags.Smoke;
 import io.qameta.allure.Feature;
 import io.qameta.allure.Story;
 import io.qameta.allure.junit4.DisplayName;
+import io.qameta.allure.junit4.Tag;
 import org.junit.Test;
 import org.junit.experimental.categories.Category;
 
@@ -21,6 +22,7 @@ public class CrudTest extends  TestBase{
     @Story("get routes for microservice")
     @DisplayName("Test Name")
     @Feature("Feature name")
+    @Tag("Regression,Smoke")
     @Test
     public void getAllUsers(){
 
@@ -34,6 +36,7 @@ public class CrudTest extends  TestBase{
     @Story("create a student")
     @DisplayName("Test Name")
     @Feature("Feature name")
+    @Tag("Regression")
     @Test
     public void createUser(){
         requestFactory.registerUser().then().log().all().statusCode(200);
