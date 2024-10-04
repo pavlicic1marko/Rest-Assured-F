@@ -22,4 +22,21 @@ public class RestClient extends TestBase {
                 .body(body)
                 .post(path);
     }
+
+    public Response doDeleteRequest(String path){
+
+        return RestAssured
+                .given()
+                .when()
+                .delete(path);
+    }
+
+    public Response doPatchRequest(String path, Object body){
+
+        return RestAssured
+                .given()
+                .when()
+                .body(body)
+                .patch(path);
+    }
 }
