@@ -2,6 +2,7 @@ package com.student.tests;
 
 
 import com.student.requests.RequestFactory;
+import com.student.specs.SpecificationFactory;
 import io.qameta.allure.Feature;
 import io.qameta.allure.Story;
 import io.qameta.allure.junit4.DisplayName;
@@ -19,7 +20,9 @@ public class CrudTest extends  TestBase{
     @Test
     public void getAllUsers(){
 
-        requestFactory.getAllUsers().then().log().all().statusCode(200);
+        requestFactory.getAllUsers().then()
+                .spec(SpecificationFactory.getGenericResponseSpec())
+                .log().all().statusCode(200);
     }
 
 
