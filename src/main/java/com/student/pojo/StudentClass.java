@@ -1,12 +1,14 @@
 package com.student.pojo;
 
+import java.util.List;
+
 public class StudentClass {
 
     String firstName;
     String lastName;
     String email;
     String program;
-    String course;
+    List<String> course;
 
     public String getFirstName() {
         return firstName;
@@ -32,11 +34,11 @@ public class StudentClass {
         this.program = program;
     }
 
-    public String getCourse() {
+    public List<String> getCourse() {
         return course;
     }
 
-    public void setCourse(String course) {
+    public void setCourse( List<String> course) {
         this.course = course;
     }
 
