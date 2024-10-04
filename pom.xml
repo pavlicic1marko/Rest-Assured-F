@@ -18,6 +18,7 @@
 
     <allure.version>2.26.0</allure.version>
     <aspectj.version>1.9.22</aspectj.version>
+    <group>com.student.tags.Smoke</group>
   </properties>
 
   <dependencyManagement>
@@ -88,6 +89,7 @@
         <artifactId>maven-surefire-plugin</artifactId>
         <version>3.2.5</version>
         <configuration>
+          <groups>${group}</groups>
           <testFailureIgnore>false</testFailureIgnore>
           <argLine>
             -Dfile.encoding=${project.build.sourceEncoding}
