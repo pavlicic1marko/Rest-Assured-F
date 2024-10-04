@@ -20,11 +20,8 @@ public class RequestFactory extends TestBase {
 
         String requestPath = "/users";
 
-        //return restClient.doGetRequest(requestPath);
+        return restClient.doGetRequest(requestPath);
 
-        return RestAssured.given().header("Authorization", "Bearer "+ access_token)
-                .when()
-                .get("/users");
     }
 
     @Step("Register a student")

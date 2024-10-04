@@ -8,7 +8,7 @@ public class RestClient extends TestBase {
 
     public Response doGetRequest(String requestPath){
 
-        return RestAssured.given()
+        return RestAssured.given().header("Authorization", "Bearer "+ access_token)
                 .when()
                 .get(requestPath);
     }
