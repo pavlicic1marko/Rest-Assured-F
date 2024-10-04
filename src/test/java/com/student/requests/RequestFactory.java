@@ -12,13 +12,16 @@ public class RequestFactory extends TestBase {
     String firstName = fakerApi.name().firstName();
     String email = firstName + "@testing.com";
 
+    RestClient restClient = new RestClient();
+
 
     @Step("get all student information")
     public Response getAllUsers(){
 
-        return RestAssured.given().header("Authorization", "Bearer "+ access_token)
-                .when()
-                .get("/users");
+        String requestPath = "/users";
+
+        return restClient.doGetRequest(requestPath);
+
     }
 
     @Step("Register a student")
