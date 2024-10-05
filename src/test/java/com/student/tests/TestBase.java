@@ -39,12 +39,14 @@ public class TestBase {
             System.out.println(description.getMethodName() + " test has ended");
         }
 
-        @Before
-        public void init() {
-            prop = PropertyReader.getInstance();
 
-            RestAssured.baseURI = prop.getProperty("baseUrl");
-            RestAssured.port = Integer.parseInt(prop.getProperty("port"));
-        }
     };
+
+    @Before
+    public void init() {
+        prop = PropertyReader.getInstance();
+
+        RestAssured.baseURI = prop.getProperty("baseUrl");
+        RestAssured.port = Integer.parseInt(prop.getProperty("port"));
+    }
 }
