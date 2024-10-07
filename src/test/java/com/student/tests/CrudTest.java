@@ -86,6 +86,11 @@ public class CrudTest extends  TestBase{
     }
 
 
+    @Category(Regression.class)
+    @Story("delete user")
+    @DisplayName("create  user and delete")
+    @Feature("Feature name")
+    @Tag("Regression")
     @Test
     public void createUserAndDeleteUser(){
         Faker fakerApi = new Faker();
@@ -97,6 +102,7 @@ public class CrudTest extends  TestBase{
 
         System.out.println("this is the id:"+ createdUserId);
 
+        requestFactory.deleteUserByUserName(email).then().statusCode(200).log().all();
     }
 
     @Category(Regression.class)

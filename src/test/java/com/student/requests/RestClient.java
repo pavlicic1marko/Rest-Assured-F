@@ -29,12 +29,12 @@ public class RestClient extends TestBase {
                 .post(path);
     }
 
-    public Response doDeleteRequest(String path){
+    public Response doDeleteRequest(String userEmail){
 
         return RestAssured
                 .given()
                 .when()
-                .delete(path);
+                .delete("users/delete/" + userEmail);
     }
 
     public Response doPatchRequest(String path, Object body){
