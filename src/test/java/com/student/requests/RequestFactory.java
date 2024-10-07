@@ -25,7 +25,18 @@ public class RequestFactory extends TestBase {
     }
 
     @Step("Register a student")
-    public Response registerUser(String email, String firstName, String password){
+    public Response registerUser(String email, String firstName, String password, Boolean isAdminUser){
+
+        String pathRegularUser ="/users/register";
+        String pathAdminUser ="/users/register-admin";
+        String path;
+
+        if (isAdminUser) {
+            path = pathAdminUser;
+        }else {
+            path= pathRegularUser;
+        }
+
 
         return RestAssured.given()
                 .contentType("multipart/form-data")
@@ -33,7 +44,7 @@ public class RequestFactory extends TestBase {
                 .multiPart("password", password)
                 .multiPart("name", firstName)
                 .when()
-                .post("/users/register");
+                .post(path);
     }
 
     @Step("Register a student")

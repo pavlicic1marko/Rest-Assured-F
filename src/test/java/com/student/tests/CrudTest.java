@@ -46,18 +46,21 @@ public class CrudTest extends  TestBase{
         Faker fakerApi = new Faker();
         String firstName = fakerApi.name().firstName();
         String email = firstName + "@testing.com";
+        Boolean isAdmin = false;
 
-        requestFactory.registerUser(email, firstName, "12345678")
+        requestFactory.registerUser(email, firstName, "12345678", isAdmin)
                 .then()
                 .body("email",equalTo(email)
                         , "username",equalTo(email)
                         ,"name",equalTo(firstName)
-                        ,"isAdmin",equalTo(false)
+                        ,"isAdmin",equalTo(isAdmin)
                         ,"$",hasKey("_id")
                         ,"$",hasKey("id")
                         ,"$",hasKey("token"))
                 .log().all().statusCode(200);
     }
+
+
 
     @Category(Regression.class)
     @Story("create a student")
