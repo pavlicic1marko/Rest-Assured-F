@@ -1,6 +1,5 @@
 package com.student.requests;
 
-import com.github.javafaker.Faker;
 import com.student.pojo.StudentClass;
 import com.student.tests.TestBase;
 import io.qameta.allure.Step;
@@ -11,9 +10,7 @@ import java.util.List;
 
 public class RequestFactory extends TestBase {
 
-    Faker fakerApi = new Faker();
-    String firstName = fakerApi.name().firstName();
-    String email = firstName + "@testing.com";
+
 
     RestClient restClient = new RestClient();
 
@@ -28,15 +25,26 @@ public class RequestFactory extends TestBase {
     }
 
     @Step("Register a student")
-    public Response registerUser(){
+    public Response registerUser(String email, String firstName, String password, Boolean isAdminUser){
+
+        String pathRegularUser ="/users/register";
+        String pathAdminUser ="/users/register-admin";
+        String path;
+
+        if (isAdminUser) {
+            path = pathAdminUser;
+        }else {
+            path= pathRegularUser;
+        }
+
 
         return RestAssured.given()
                 .contentType("multipart/form-data")
                 .multiPart("email", email)
-                .multiPart("password", "12345678")
+                .multiPart("password", password)
                 .multiPart("name", firstName)
                 .when()
-                .post("/users/register");
+                .post(path);
     }
 
     @Step("Register a student")
