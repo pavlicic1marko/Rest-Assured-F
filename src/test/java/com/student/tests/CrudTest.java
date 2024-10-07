@@ -1,6 +1,7 @@
 package com.student.tests;
 
 
+import com.github.javafaker.Faker;
 import com.student.requests.RequestFactory;
 import com.student.specs.SpecificationFactory;
 import com.student.tags.Regression;
@@ -40,7 +41,12 @@ public class CrudTest extends  TestBase{
     @Tag("Regression")
     @Test
     public void createUser(){
-        requestFactory.registerUser().then().log().all().statusCode(200);
+
+        Faker fakerApi = new Faker();
+        String firstName = fakerApi.name().firstName();
+        String email = firstName + "@testing.com";
+
+        requestFactory.registerUser(email, firstName, "12345678").then().log().all().statusCode(200);
     }
 
     @Category(Regression.class)
