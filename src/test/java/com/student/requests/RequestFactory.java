@@ -47,6 +47,11 @@ public class RequestFactory extends TestBase {
                 .post(path);
     }
 
+    @Step("delete a user")
+    public Response deleteUserByUserName(String email){
+        return restClient.doDeleteRequest(email);
+    }
+
     @Step("Register a student")
     public Response loginUser(String username, String password){
         return   RestAssured.given()
