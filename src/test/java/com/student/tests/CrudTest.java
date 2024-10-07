@@ -13,6 +13,7 @@ import io.qameta.allure.junit4.Tag;
 import org.junit.Test;
 import org.junit.experimental.categories.Category;
 
+import static org.hamcrest.Matchers.equalTo;
 import static org.hamcrest.Matchers.hasKey;
 
 
@@ -46,7 +47,21 @@ public class CrudTest extends  TestBase{
         String firstName = fakerApi.name().firstName();
         String email = firstName + "@testing.com";
 
-        requestFactory.registerUser(email, firstName, "12345678").then().log().all().statusCode(200);
+        requestFactory.registerUser(email, firstName, "12345678")
+                .then()
+                .body("email",equalTo(email))
+                .body("username",equalTo(email))
+                .body("name",equalTo(firstName))
+
+                .body("isAdmin",equalTo(false))
+
+                .body("$",hasKey("_id"))
+                .body("$",hasKey("id"))
+                .body("$",hasKey("token"))
+
+
+
+                .log().all().statusCode(200);
     }
 
     @Category(Regression.class)
