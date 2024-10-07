@@ -9,8 +9,11 @@ import io.qameta.allure.Feature;
 import io.qameta.allure.Story;
 import io.qameta.allure.junit4.DisplayName;
 import io.qameta.allure.junit4.Tag;
+import io.restassured.RestAssured;
 import org.junit.Test;
 import org.junit.experimental.categories.Category;
+
+import static org.hamcrest.Matchers.hasKey;
 
 
 @Story("get routes for microservice")
@@ -41,7 +44,20 @@ public class CrudTest extends  TestBase{
     public void createUser(){
         requestFactory.registerUser().then().log().all().statusCode(200);
     }
+
+    @Test
+    public void login(){
+         RestAssured.given()                .contentType("multipart/form-data")
+                .multiPart("username", "dennis")
+                .multiPart("password", "Posao2018!")
+                .when()
+                .post("/users/login")
+                 .then().body("$",hasKey("access"))
+                 .log().all().statusCode(200);
+    }
 }
+
+
 
 
 
