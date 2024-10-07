@@ -34,7 +34,6 @@ public class CrudTest extends  TestBase{
     }
 
     @Category(Regression.class)
-
     @Story("create a student")
     @DisplayName("Test Name")
     @Feature("Feature name")
@@ -44,6 +43,11 @@ public class CrudTest extends  TestBase{
         requestFactory.registerUser().then().log().all().statusCode(200);
     }
 
+    @Category(Regression.class)
+    @Story("create a student")
+    @DisplayName("Test Name")
+    @Feature("Feature name")
+    @Tag("Regression")
     @Test
     public void loginAdminUser(){
 
