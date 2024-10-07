@@ -39,6 +39,16 @@ public class RequestFactory extends TestBase {
                 .post("/users/register");
     }
 
+    @Step("Register a student")
+    public Response loginUser(String username, String password){
+        return   RestAssured.given()
+                .contentType("multipart/form-data")
+                .multiPart("username", username)
+                .multiPart("password", password)
+                .when()
+                .post("/users/login");
+    }
+
     @Step("update student information with first name: {0}, lastName : {1}, email: {2}, program: {3}, courses: {4}")
     public Response updateStudent(String firstName, String lastName, String email, String program, List<String> courses){
 

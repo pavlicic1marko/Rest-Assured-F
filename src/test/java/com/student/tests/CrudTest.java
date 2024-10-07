@@ -9,7 +9,6 @@ import io.qameta.allure.Feature;
 import io.qameta.allure.Story;
 import io.qameta.allure.junit4.DisplayName;
 import io.qameta.allure.junit4.Tag;
-import io.restassured.RestAssured;
 import org.junit.Test;
 import org.junit.experimental.categories.Category;
 
@@ -46,13 +45,11 @@ public class CrudTest extends  TestBase{
     }
 
     @Test
-    public void login(){
-         RestAssured.given()                .contentType("multipart/form-data")
-                .multiPart("username", "dennis")
-                .multiPart("password", "Posao2018!")
-                .when()
-                .post("/users/login")
-                 .then().body("$",hasKey("access"))
+    public void loginAdminUser(){
+
+        requestFactory.loginUser("dennis", "Posao2018")
+                .then()
+                .body("$",hasKey("access"))
                  .log().all().statusCode(200);
     }
 }
