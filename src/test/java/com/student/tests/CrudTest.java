@@ -60,6 +60,31 @@ public class CrudTest extends  TestBase{
                 .log().all().statusCode(200);
     }
 
+    @Category(Regression.class)
+    @Story("create a admin user")
+    @DisplayName("create admin user and check values")
+    @Feature("Feature name")
+    @Tag("Regression")
+    @Test
+    public void createAdminUser(){
+
+        Faker fakerApi = new Faker();
+        String firstName = fakerApi.name().firstName();
+        String email = firstName + "@testing.com";
+        Boolean isAdmin = true;
+
+        requestFactory.registerUser(email, firstName, "12345678", isAdmin)
+                .then()
+                .body("email",equalTo(email)
+                        , "username",equalTo(email)
+                        ,"name",equalTo(firstName)
+                        ,"isAdmin",equalTo(1)
+                        ,"$",hasKey("_id")
+                        ,"$",hasKey("id")
+                        ,"$",hasKey("token"))
+                .log().all().statusCode(200);
+    }
+
 
 
     @Category(Regression.class)
