@@ -86,6 +86,18 @@ public class CrudTest extends  TestBase{
     }
 
 
+    @Test
+    public void createUserAndDeleteUser(){
+        Faker fakerApi = new Faker();
+        String firstName = fakerApi.name().firstName();
+        String email = firstName + "@testing.com";
+        Boolean isAdmin = true;
+        int  createdUserId = requestFactory.registerUser(email, firstName, "12345678", isAdmin)
+                .then().extract().path("id");
+
+        System.out.println("this is the id:"+ createdUserId);
+
+    }
 
     @Category(Regression.class)
     @Story("create a student")
