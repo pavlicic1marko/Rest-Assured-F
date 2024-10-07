@@ -37,7 +37,7 @@ public class CrudTest extends  TestBase{
 
     @Category(Regression.class)
     @Story("create a student")
-    @DisplayName("Test Name")
+    @DisplayName("create student and check values")
     @Feature("Feature name")
     @Tag("Regression")
     @Test
@@ -49,18 +49,13 @@ public class CrudTest extends  TestBase{
 
         requestFactory.registerUser(email, firstName, "12345678")
                 .then()
-                .body("email",equalTo(email))
-                .body("username",equalTo(email))
-                .body("name",equalTo(firstName))
-
-                .body("isAdmin",equalTo(false))
-
-                .body("$",hasKey("_id"))
-                .body("$",hasKey("id"))
-                .body("$",hasKey("token"))
-
-
-
+                .body("email",equalTo(email)
+                        , "username",equalTo(email)
+                        ,"name",equalTo(firstName)
+                        ,"isAdmin",equalTo(false)
+                        ,"$",hasKey("_id")
+                        ,"$",hasKey("id")
+                        ,"$",hasKey("token"))
                 .log().all().statusCode(200);
     }
 
