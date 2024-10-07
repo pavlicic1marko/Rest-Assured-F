@@ -12,6 +12,8 @@ import io.qameta.allure.junit4.Tag;
 import org.junit.Test;
 import org.junit.experimental.categories.Category;
 
+import static org.hamcrest.Matchers.hasKey;
+
 
 @Story("get routes for microservice")
 public class CrudTest extends  TestBase{
@@ -41,7 +43,18 @@ public class CrudTest extends  TestBase{
     public void createUser(){
         requestFactory.registerUser().then().log().all().statusCode(200);
     }
+
+    @Test
+    public void loginAdminUser(){
+
+        requestFactory.loginUser("dennis", "Posao2018")
+                .then()
+                .body("$",hasKey("access"))
+                 .log().all().statusCode(200);
+    }
 }
+
+
 
 
 
