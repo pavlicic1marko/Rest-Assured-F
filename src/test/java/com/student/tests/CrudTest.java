@@ -113,7 +113,7 @@ public class CrudTest extends  TestBase{
     @Test
     public void loginAdminUser(){
 
-        requestFactory.loginUser("dennis", "Posao2018")
+        requestFactory.loginUser("dennis", "Posao2018!")
                 .then()
                 .body("$",hasKey("access"))
                  .log().all().statusCode(200);
