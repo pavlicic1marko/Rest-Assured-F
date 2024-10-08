@@ -11,7 +11,7 @@ public class Constants {
         public static final String USER_CREATE = "/student/create";
 
 
-        public static final String USER_DELETE = "/users/delete";
+        public static final String USER_DELETE = "/users/delete/";
 
 
     }
