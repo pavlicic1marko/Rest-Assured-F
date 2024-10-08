@@ -8,6 +8,10 @@ import io.restassured.response.Response;
 
 import java.util.List;
 
+
+import static com.student.constants.Constants.UrlConstants.*;
+
+
 public class RequestFactory extends TestBase {
 
 
@@ -27,14 +31,13 @@ public class RequestFactory extends TestBase {
     @Step("Register a student")
     public Response registerUser(String email, String firstName, String password, Boolean isAdminUser){
 
-        String pathRegularUser ="/users/register";
-        String pathAdminUser ="/users/register-admin";
+
         String path;
 
         if (isAdminUser) {
-            path = pathAdminUser;
+            path =  REGISTER_ADMIN_URL;
         }else {
-            path= pathRegularUser;
+            path= REGISTER_URL;
         }
 
 
