@@ -21,10 +21,8 @@ public class RequestFactory extends TestBase {
 
     @Step("get all student information")
     public Response getAllUsers(){
-
-        String requestPath = "/users";
-
-        return restClient.doGetRequest(requestPath);
+        
+        return restClient.doGetRequest(USER);
 
     }
 
@@ -62,7 +60,7 @@ public class RequestFactory extends TestBase {
                 .multiPart("username", username)
                 .multiPart("password", password)
                 .when()
-                .post("/users/login");
+                .post(USER_LOGIN);
     }
 
     @Step("update student information with first name: {0}, lastName : {1}, email: {2}, program: {3}, courses: {4}")
