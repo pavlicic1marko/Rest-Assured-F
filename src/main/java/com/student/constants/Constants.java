@@ -8,6 +8,11 @@ public class Constants {
         public static final String USER_LOGIN = "/users/login";
         public static final String USER = "/users";
 
+        public static final String USER_CREATE = "/student/create";
+
+
+        public static final String USER_DELETE = "/users/delete";
+
 
     }
 

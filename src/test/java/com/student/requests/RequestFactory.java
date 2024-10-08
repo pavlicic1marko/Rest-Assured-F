@@ -66,7 +66,7 @@ public class RequestFactory extends TestBase {
     @Step("update student information with first name: {0}, lastName : {1}, email: {2}, program: {3}, courses: {4}")
     public Response updateStudent(String firstName, String lastName, String email, String program, List<String> courses){
 
-        String path = "/student/create";
+        String path = USER_CREATE;
         StudentClass student = new StudentClass();
         student.setFirstName(firstName);
         student.setLastName(lastName);

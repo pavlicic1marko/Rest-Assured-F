@@ -6,6 +6,9 @@ import io.restassured.RestAssured;
 import io.restassured.http.ContentType;
 import io.restassured.response.Response;
 
+import static com.student.constants.Constants.UrlConstants.USER_CREATE;
+import static com.student.constants.Constants.UrlConstants.USER_DELETE;
+
 public class RestClient extends TestBase {
 
     //RequestFactory requestFactory = new RequestFactory();
@@ -34,7 +37,7 @@ public class RestClient extends TestBase {
         return RestAssured
                 .given()
                 .when()
-                .delete("users/delete/" + userEmail);
+                .delete(USER_DELETE + userEmail);
     }
 
     public Response doPatchRequest(String path, Object body){
