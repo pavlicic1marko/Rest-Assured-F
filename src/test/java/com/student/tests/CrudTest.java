@@ -113,10 +113,12 @@ public class CrudTest extends  TestBase{
     @Test
     public void loginAdminUser(){
 
-        requestFactory.loginUser("dennis", "Posao2018")
+        String token  = requestFactory.loginUser("dennis", "Posao2018!")
                 .then()
                 .body("$",hasKey("access"))
-                 .log().all().statusCode(200);
+                .extract().path("access");
+
+        System.out.println(token);
     }
 }
 

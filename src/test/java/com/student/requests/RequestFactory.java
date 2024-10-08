@@ -8,6 +8,10 @@ import io.restassured.response.Response;
 
 import java.util.List;
 
+
+import static com.student.constants.Constants.UrlConstants.*;
+
+
 public class RequestFactory extends TestBase {
 
 
@@ -17,24 +21,21 @@ public class RequestFactory extends TestBase {
 
     @Step("get all student information")
     public Response getAllUsers(){
-
-        String requestPath = "/users";
-
-        return restClient.doGetRequest(requestPath);
+        
+        return restClient.doGetRequest(USER);
 
     }
 
     @Step("Register a student")
     public Response registerUser(String email, String firstName, String password, Boolean isAdminUser){
 
-        String pathRegularUser ="/users/register";
-        String pathAdminUser ="/users/register-admin";
+
         String path;
 
         if (isAdminUser) {
-            path = pathAdminUser;
+            path =  REGISTER_ADMIN_URL;
         }else {
-            path= pathRegularUser;
+            path= REGISTER_URL;
         }
 
 
@@ -59,13 +60,13 @@ public class RequestFactory extends TestBase {
                 .multiPart("username", username)
                 .multiPart("password", password)
                 .when()
-                .post("/users/login");
+                .post(USER_LOGIN);
     }
 
     @Step("update student information with first name: {0}, lastName : {1}, email: {2}, program: {3}, courses: {4}")
     public Response updateStudent(String firstName, String lastName, String email, String program, List<String> courses){
 
-        String path = "/student/create";
+        String path = USER_CREATE;
         StudentClass student = new StudentClass();
         student.setFirstName(firstName);
         student.setLastName(lastName);
