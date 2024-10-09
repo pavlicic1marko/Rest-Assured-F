@@ -11,7 +11,7 @@ import org.junit.runner.Description;
 public class TestBase {
 
     public static PropertyReader prop;
-    public String access_token = "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ0b2tlbl90eXBlIjoiYWNjZXNzIiwiZXhwIjoxNzI4NDU5NTQxLCJpYXQiOjE3MjgwMjc1NDEsImp0aSI6ImY3OGY3Mjc0MDU3OTQ5NTY4MGJhZTJlNTZhOTRkOTY2IiwidXNlcl9pZCI6MX0.-iHRIueMLTSTDFCBdGWGwmod80vt-zhCErofgWhAGwA";
+    public String access_token = "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ0b2tlbl90eXBlIjoiYWNjZXNzIiwiZXhwIjoxNzI4OTI1MDkzLCJpYXQiOjE3Mjg0OTMwOTMsImp0aSI6IjgyYzZlODY4YTBhNTQ1OTc5MGVjZmJlZDAzYTIwZmRlIiwidXNlcl9pZCI6MX0.-UZBkGQeEK3-oCFS8stiiMI_F9twFtkIE8rXHj24WuY";
 
     @Rule
     public TestRule listener = new TestWatcher() {

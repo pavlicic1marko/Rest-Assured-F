@@ -34,6 +34,17 @@ public class CrudTest extends  TestBase{
                 .spec(SpecificationFactory.getGenericResponseSpec())
                 .log().all().statusCode(200);
     }
+    @Category({Smoke.class, Regression.class})
+    @Story("get user profile")
+    @DisplayName("Test Name")
+    @Feature("User Profile")
+    @Tag("Regression,Smoke")
+    @Test
+    public void getUserProfile(){
+        requestFactory.getUserProfile().then()
+                .spec(SpecificationFactory.getGenericResponseSpec())
+                .log().all().statusCode(200);
+    }
 
     @Category(Regression.class)
     @Story("create a student")
