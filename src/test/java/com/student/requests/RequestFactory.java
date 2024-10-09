@@ -82,7 +82,7 @@ public class RequestFactory extends TestBase {
 
     public Response getUserProfile(){
 
-        return restClient.doGetRequest(USER+"/profile");
+        return restClient.doGetRequest(USER_PROFILE);
 
     }
 
