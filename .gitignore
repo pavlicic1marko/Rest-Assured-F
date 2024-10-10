@@ -43,3 +43,4 @@ build/
 /.idea/uiDesigner.xml
 /allure-report/**
 /allure-results/**
+/src/test/resources/user.properties
