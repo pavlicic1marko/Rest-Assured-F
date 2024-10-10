@@ -131,6 +131,24 @@ public class UserTest extends  TestBase{
 
         System.out.println(token);
     }
+
+    @Test
+    public void updateUserData(){
+        //create user and then update the email and username
+        Faker fakerApi = new Faker();
+        String firstName = fakerApi.name().firstName();
+        String email = firstName + "@testing.com";
+        Boolean isAdmin = true;
+
+        String  Access_Token = requestFactory.registerUser(email, firstName, "12345678", isAdmin)
+                .then().extract().path("token");
+
+        String newEmail = firstName + "1@testing.com";
+
+        requestFactory.updateStudent(newEmail, newEmail, Access_Token).then()
+                .body("email",equalTo(newEmail),"username",equalTo(newEmail))
+                .log().all();
+    }
 }
 
 

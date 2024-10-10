@@ -20,14 +20,14 @@ public class RestClient extends TestBase {
                 .get(requestPath);
     }
 
-    public Response doPostRequest(String path, Object body){
+    public Response doPutRequest(String path, Object body, String newToken){
 
-        return RestAssured.given()
+        return RestAssured.given().header("Authorization", "Bearer "+ newToken)
                 .contentType(ContentType.JSON)
                //.spec(SpecificationFactory.logPayloadResponseInfo())
                 .when()
                 .body(body)
-                .post(path);
+                .put(path);
     }
 
     public Response doDeleteRequest(String userEmail){

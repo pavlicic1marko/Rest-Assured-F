@@ -17,6 +17,8 @@ public class Constants {
 
         public static final String USER_DELETE = "/users/delete/";
 
+        public static final String USER_UPDATE="/users/profile/update";
+
 
     }
 
