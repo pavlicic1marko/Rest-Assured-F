@@ -26,6 +26,13 @@ public class RequestFactory extends TestBase {
 
     }
 
+    @Step("get all Routes")
+    public Response getAllRotes(){
+
+        return restClient.doGetRequest(ROUTES);
+
+    }
+
     @Step("Register a student")
     public Response registerUser(String email, String firstName, String password, Boolean isAdminUser){
 

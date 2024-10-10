@@ -7,6 +7,8 @@ public class Constants {
         public static final String REGISTER_ADMIN_URL = "/users/register-admin";
         public static final String USER_LOGIN = "/users/login";
         public static final String USER = "/users";
+        public static final String ROUTES = "/routes";
+
         public static final String USER_PROFILE = "/users/profile";
 
 
