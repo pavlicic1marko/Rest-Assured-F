@@ -1,6 +1,7 @@
 package com.users.tests;
 
 import com.users.util.PropertyReader;
+import com.users.util.UserCredentialsReader;
 import io.restassured.RestAssured;
 import org.junit.Before;
 import org.junit.Rule;
@@ -13,15 +14,18 @@ import static org.hamcrest.Matchers.hasKey;
 public class TestBase {
 
     public static PropertyReader prop;
+    public static UserCredentialsReader credentialsProp;
     public String access_token = getToken();
 
     public String getToken(){
 
+        credentialsProp = UserCredentialsReader.getInstance();
+
 
         return RestAssured.given()
                 .contentType("multipart/form-data")
-                .multiPart("username", "dennis")
-                .multiPart("password", "Posao2018!")
+                .multiPart("username", credentialsProp.getProperty("userName"))
+                .multiPart("password", credentialsProp.getProperty("password"))
                 .when()
                 .post("http://127.0.0.1:8000/api/users/login").then()
                 .body("$",hasKey("access"))
