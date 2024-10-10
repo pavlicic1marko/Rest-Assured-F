@@ -1,4 +1,4 @@
-package com.student.util;
+package com.users.util;
 
 import java.io.InputStream;
 import java.util.Properties;

@@ -1,6 +1,6 @@
-package com.student.specs;
-import com.student.tests.TestBase;
-import com.student.util.PropertyReader;
+package com.users.specs;
+import com.users.tests.TestBase;
+import com.users.util.PropertyReader;
 import io.qameta.allure.restassured.AllureRestAssured;
 import io.restassured.builder.RequestSpecBuilder;
 import io.restassured.builder.ResponseSpecBuilder;

@@ -1,4 +1,4 @@
-package com.student.tags;
+package com.users.tags;
 
 public interface Regression {
 }

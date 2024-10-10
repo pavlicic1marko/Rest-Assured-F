@@ -1,6 +1,6 @@
-package com.student.tests;
+package com.users.tests;
 
-import com.student.util.PropertyReader;
+import com.users.util.PropertyReader;
 import io.restassured.RestAssured;
 import org.junit.Before;
 import org.junit.Rule;
@@ -8,11 +8,25 @@ import org.junit.rules.TestRule;
 import org.junit.rules.TestWatcher;
 import org.junit.runner.Description;
 
+import static org.hamcrest.Matchers.hasKey;
+
 public class TestBase {
 
     public static PropertyReader prop;
-    public String access_token = "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ0b2tlbl90eXBlIjoiYWNjZXNzIiwiZXhwIjoxNzI4OTI1MDkzLCJpYXQiOjE3Mjg0OTMwOTMsImp0aSI6IjgyYzZlODY4YTBhNTQ1OTc5MGVjZmJlZDAzYTIwZmRlIiwidXNlcl9pZCI6MX0.-UZBkGQeEK3-oCFS8stiiMI_F9twFtkIE8rXHj24WuY";
+    public String access_token = getToken();
 
+    public String getToken(){
+
+
+        return RestAssured.given()
+                .contentType("multipart/form-data")
+                .multiPart("username", "dennis")
+                .multiPart("password", "Posao2018!")
+                .when()
+                .post("http://127.0.0.1:8000/api/users/login").then()
+                .body("$",hasKey("access"))
+                .extract().path("access");
+    }
     @Rule
     public TestRule listener = new TestWatcher() {
         @Override
