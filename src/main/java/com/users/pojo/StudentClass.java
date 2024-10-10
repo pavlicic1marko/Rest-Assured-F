@@ -6,9 +6,19 @@ public class StudentClass {
 
     String firstName;
     String lastName;
+
+    String name;
     String email;
     String program;
     List<String> course;
+
+    public String getName() {
+        return name;
+    }
+
+    public void setName(String name) {
+        this.name = name;
+    }
 
     public String getFirstName() {
         return firstName;

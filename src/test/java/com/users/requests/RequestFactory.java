@@ -6,8 +6,6 @@ import io.qameta.allure.Step;
 import io.restassured.RestAssured;
 import io.restassured.response.Response;
 
-import java.util.List;
-
 
 import static com.users.constants.Constants.UrlConstants.*;
 
@@ -70,19 +68,16 @@ public class RequestFactory extends TestBase {
                 .post(USER_LOGIN);
     }
 
-    @Step("update student information with first name: {0}, lastName : {1}, email: {2}, program: {3}, courses: {4}")
-    public Response updateStudent(String firstName, String lastName, String email, String program, List<String> courses){
+    @Step("update student information with first name: {0}, email {1}")
+    public Response updateStudent(String newName, String newEmail, String newToken){
 
-        String path = USER_CREATE;
+        String path = USER_UPDATE;
         StudentClass student = new StudentClass();
-        student.setFirstName(firstName);
-        student.setLastName(lastName);
-        student.setEmail(email);
-        student.setProgram(program);
-        student.setCourse(courses);
+        student.setName(newName);
+        student.setEmail(newEmail);
 
 
-        return restClient.doPostRequest(path, student);
+        return restClient.doPutRequest(path, "{\"name\":\"" + newName + "\",\"email\":\""+ newEmail + "\"}", newToken);
 
 
     }
