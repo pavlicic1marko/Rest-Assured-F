@@ -1,7 +1,7 @@
-package com.student.requests;
+package com.users.requests;
 
-import com.student.pojo.StudentClass;
-import com.student.tests.TestBase;
+import com.users.pojo.StudentClass;
+import com.users.tests.TestBase;
 import io.qameta.allure.Step;
 import io.restassured.RestAssured;
 import io.restassured.response.Response;
@@ -9,7 +9,7 @@ import io.restassured.response.Response;
 import java.util.List;
 
 
-import static com.student.constants.Constants.UrlConstants.*;
+import static com.users.constants.Constants.UrlConstants.*;
 
 
 public class RequestFactory extends TestBase {

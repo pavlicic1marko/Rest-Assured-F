@@ -1,4 +1,4 @@
-package com.student.tests;
+package com.users.tests;
 
 import com.tngtech.java.junit.dataprovider.DataProvider;
 import com.tngtech.java.junit.dataprovider.DataProviderRunner;

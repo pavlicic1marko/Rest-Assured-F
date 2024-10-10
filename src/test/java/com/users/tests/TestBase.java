@@ -1,7 +1,6 @@
-package com.student.tests;
+package com.users.tests;
 
-import com.student.requests.RequestFactory;
-import com.student.util.PropertyReader;
+import com.users.util.PropertyReader;
 import io.restassured.RestAssured;
 import org.junit.Before;
 import org.junit.Rule;
@@ -9,7 +8,6 @@ import org.junit.rules.TestRule;
 import org.junit.rules.TestWatcher;
 import org.junit.runner.Description;
 
-import static com.student.constants.Constants.UrlConstants.USER_LOGIN;
 import static org.hamcrest.Matchers.hasKey;
 
 public class TestBase {

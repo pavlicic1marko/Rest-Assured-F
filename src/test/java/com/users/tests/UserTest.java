@@ -1,11 +1,11 @@
-package com.student.tests;
+package com.users.tests;
 
 
 import com.github.javafaker.Faker;
-import com.student.requests.RequestFactory;
-import com.student.specs.SpecificationFactory;
-import com.student.tags.Regression;
-import com.student.tags.Smoke;
+import com.users.requests.RequestFactory;
+import com.users.specs.SpecificationFactory;
+import com.users.tags.Regression;
+import com.users.tags.Smoke;
 import io.qameta.allure.Feature;
 import io.qameta.allure.Story;
 import io.qameta.allure.junit4.DisplayName;
@@ -18,7 +18,7 @@ import static org.hamcrest.Matchers.hasKey;
 
 
 @Story("get routes for microservice")
-public class CrudTest extends  TestBase{
+public class UserTest extends  TestBase{
 
     RequestFactory requestFactory = new RequestFactory();
 

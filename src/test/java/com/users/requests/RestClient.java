@@ -1,13 +1,12 @@
-package com.student.requests;
+package com.users.requests;
 
-import com.student.specs.SpecificationFactory;
-import com.student.tests.TestBase;
+import com.users.specs.SpecificationFactory;
+import com.users.tests.TestBase;
 import io.restassured.RestAssured;
 import io.restassured.http.ContentType;
 import io.restassured.response.Response;
 
-import static com.student.constants.Constants.UrlConstants.USER_CREATE;
-import static com.student.constants.Constants.UrlConstants.USER_DELETE;
+import static com.users.constants.Constants.UrlConstants.USER_DELETE;
 
 public class RestClient extends TestBase {
 

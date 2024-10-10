@@ -1,4 +1,4 @@
-package com.student.constants;
+package com.users.constants;
 
 public class Constants {
 
