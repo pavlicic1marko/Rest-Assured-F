@@ -10,7 +10,6 @@ import static com.users.constants.Constants.UrlConstants.USER_DELETE;
 
 public class RestClient extends TestBase {
 
-    //RequestFactory requestFactory = new RequestFactory();
 
 
     public Response doGetRequest(String requestPath){
