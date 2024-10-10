@@ -10,6 +10,8 @@ import io.qameta.allure.junit4.Tag;
 import org.junit.Test;
 import org.junit.experimental.categories.Category;
 
+import static org.hamcrest.Matchers.equalTo;
+
 public class CommsTest extends TestBase{
 
 
@@ -20,8 +22,9 @@ public class CommsTest extends TestBase{
     @DisplayName("communicate with todo microservice")
     @Feature("Feature name")
     @Tag("Comms")
+    @Test
     public void commsTest(){
-        restClient.doGetRequest("/comms").then().log().all().statusCode(200);
+        restClient.doGetRequest("/comms").then().body(equalTo("[\"api/products\",\"api/products/<id>\"]")).log().all().statusCode(200);
 
     }
 
