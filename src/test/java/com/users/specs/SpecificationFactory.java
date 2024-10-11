@@ -7,7 +7,10 @@ import io.restassured.builder.ResponseSpecBuilder;
 import io.restassured.specification.RequestSpecification;
 import io.restassured.specification.ResponseSpecification;
 
+
 import java.util.Objects;
+
+import static org.hamcrest.Matchers.lessThan;
 
 
 public class SpecificationFactory extends TestBase {
@@ -20,6 +23,7 @@ public class SpecificationFactory extends TestBase {
 
         responseSpec = new ResponseSpecBuilder();
         responseSpec.expectHeader("Content-Type","application/json");
+        responseSpec.expectResponseTime(lessThan(1000L));
 
         responseSpecification = responseSpec.build();
 
