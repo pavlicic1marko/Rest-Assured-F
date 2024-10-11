@@ -131,7 +131,11 @@ public class UserTest extends  TestBase{
 
         System.out.println(token);
     }
-
+    @Category(Regression.class)
+    @Story("update a student")
+    @DisplayName("Test Name")
+    @Feature("Student update")
+    @Tag("Regression")
     @Test
     public void updateUserData(){
         //create user and then update the email and username
