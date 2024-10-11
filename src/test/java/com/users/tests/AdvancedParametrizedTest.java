@@ -5,7 +5,13 @@ import com.tngtech.java.junit.dataprovider.DataProvider;
 import com.tngtech.java.junit.dataprovider.DataProviderRunner;
 import com.tngtech.java.junit.dataprovider.UseDataProvider;
 import com.users.requests.RequestFactory;
+import com.users.tags.Regression;
+import io.qameta.allure.Feature;
+import io.qameta.allure.Story;
+import io.qameta.allure.junit4.DisplayName;
+import io.qameta.allure.junit4.Tag;
 import org.junit.Test;
+import org.junit.experimental.categories.Category;
 import org.junit.runner.RunWith;
 
 @RunWith(DataProviderRunner.class)
@@ -37,7 +43,11 @@ public class AdvancedParametrizedTest extends TestBase{
     public void firstTest(int num1, int num2){
         System.out.println(num1 +" OR "+ num2);
     }
-
+    @Category(Regression.class)
+    @Story("create 3 non-Admin users")
+    @DisplayName("Test Name")
+    @Feature("create users")
+    @Tag("Regression")
     @UseDataProvider("userData")
     @Test
     public void registerUsers(String email, String firstName, String password){
