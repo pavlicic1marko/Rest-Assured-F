@@ -2,7 +2,6 @@ package com.users.tests;
 
 import com.users.requests.RequestFactory;
 import com.users.requests.RestClient;
-import com.users.tags.Regression;
 import io.qameta.allure.Feature;
 import io.qameta.allure.Story;
 import io.qameta.allure.junit4.DisplayName;
