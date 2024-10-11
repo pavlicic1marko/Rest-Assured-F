@@ -1,5 +1,7 @@
 package com.users.requests;
 
+import com.fasterxml.jackson.core.JsonProcessingException;
+import com.fasterxml.jackson.databind.ObjectMapper;
 import com.users.pojo.StudentClass;
 import com.users.tests.TestBase;
 import io.qameta.allure.Step;
@@ -69,15 +71,22 @@ public class RequestFactory extends TestBase {
     }
 
     @Step("update student information with first name: {0}, email {1}")
-    public Response updateStudent(String newName, String newEmail, String newToken){
+    public Response updateStudent(String newName, String newEmail, String newToken) {
 
         String path = USER_UPDATE;
         StudentClass student = new StudentClass();
         student.setName(newName);
         student.setEmail(newEmail);
+        ObjectMapper mapper = new ObjectMapper();
+        try {
+            String jsonInString = mapper.writeValueAsString(student);
+            return restClient.doPutRequest(path, jsonInString, newToken);
+        } catch (JsonProcessingException e) {
+            throw new RuntimeException(e);
+        }
 
 
-        return restClient.doPutRequest(path, "{\"name\":\"" + newName + "\",\"email\":\""+ newEmail + "\"}", newToken);
+
 
 
     }

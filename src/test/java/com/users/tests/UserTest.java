@@ -131,7 +131,11 @@ public class UserTest extends  TestBase{
 
         System.out.println(token);
     }
-
+    @Category(Regression.class)
+    @Story("update a student")
+    @DisplayName("Test Name")
+    @Feature("Student update")
+    @Tag("Regression")
     @Test
     public void updateUserData(){
         //create user and then update the email and username
@@ -143,7 +147,7 @@ public class UserTest extends  TestBase{
         String  Access_Token = requestFactory.registerUser(email, firstName, "12345678", isAdmin)
                 .then().extract().path("token");
 
-        String newEmail = firstName + "1@testing.com";
+        String newEmail = firstName + "updated@testing.com";
 
         requestFactory.updateStudent(newEmail, newEmail, Access_Token).then()
                 .body("email",equalTo(newEmail),"username",equalTo(newEmail))
