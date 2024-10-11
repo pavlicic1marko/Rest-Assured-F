@@ -14,7 +14,7 @@ public class AdvancedParametrizedTest extends TestBase{
     RequestFactory requestFactory = new RequestFactory();
 
     @DataProvider
-    public static Object[][] userEmails(){
+    public static Object[][] userData(){
         Faker fakerApi = new Faker();
 
         return  new Object[][]{
@@ -38,7 +38,7 @@ public class AdvancedParametrizedTest extends TestBase{
         System.out.println(num1 +" OR "+ num2);
     }
 
-    @UseDataProvider("userEmails")
+    @UseDataProvider("userData")
     @Test
     public void registerUsers(String email, String firstName, String password){
         requestFactory.registerUser(email ,firstName ,password, false).then().log().all();
