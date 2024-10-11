@@ -4,29 +4,9 @@ import java.util.List;
 
 public class StudentClass {
 
-    String firstName;
-    String lastName;
+
 
     String name;
-    String email;
-    String program;
-    List<String> course;
-
-    public String getName() {
-        return name;
-    }
-
-    public void setName(String name) {
-        this.name = name;
-    }
-
-    public String getFirstName() {
-        return firstName;
-    }
-
-    public void setFirstName(String firstName) {
-        this.firstName = firstName;
-    }
 
     public String getEmail() {
         return email;
@@ -36,30 +16,16 @@ public class StudentClass {
         this.email = email;
     }
 
-    public String getProgram() {
-        return program;
+    String email;
+
+    public String getName() {
+        return name;
     }
 
-    public void setProgram(String program) {
-        this.program = program;
-    }
-
-    public List<String> getCourse() {
-        return course;
-    }
-
-    public void setCourse( List<String> course) {
-        this.course = course;
+    public void setName(String name) {
+        this.name = name;
     }
 
 
-
-    public String getLastName() {
-        return lastName;
-    }
-
-    public void setLastName(String lastName) {
-        this.lastName = lastName;
-    }
 
 }
