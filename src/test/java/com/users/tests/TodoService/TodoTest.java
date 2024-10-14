@@ -1,5 +1,6 @@
 package com.users.tests.TodoService;
 
+import com.users.util.UserCredentialsReader;
 import io.restassured.RestAssured;
 import org.junit.Test;
 
@@ -7,7 +8,9 @@ import static org.hamcrest.Matchers.hasKey;
 
 public class TodoTest {
 
-    protected String token = "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ0b2tlbl90eXBlIjoiYWNjZXNzIiwiZXhwIjoxNzI5MzY2OTA2LCJpYXQiOjE3Mjg5MzQ5MDYsImp0aSI6IjE1ZDc4NTRmYzRlMTQzMDNhOTU0MWMyOGZmN2U0ZmIyIiwidXNlcl9pZCI6MX0.tTUbpxCWfLmAQtPGGt1V8mOEo665jTl1xXdiGYWXHYE";
+    public static UserCredentialsReader credentialsProp;
+
+    protected String token = getToken();
 
     @Test
     public void getTodos(){
@@ -64,5 +67,20 @@ public class TodoTest {
                 .delete("http://127.0.0.1:8001/api/delete/" + todoId)
                 .then().log().all();
 
+    }
+
+    public String getToken(){
+
+        credentialsProp = UserCredentialsReader.getInstance();
+
+
+        return RestAssured.given()
+                .contentType("multipart/form-data")
+                .multiPart("username", credentialsProp.getProperty("userName"))
+                .multiPart("password", credentialsProp.getProperty("password"))
+                .when()
+                .post("http://127.0.0.1:8000/api/users/login").then()
+                .body("$",hasKey("access"))
+                .extract().path("access");
     }
 }
