@@ -2,6 +2,7 @@ package com.users.tests.TodoService;
 
 import com.users.tags.Regression;
 import com.users.tags.Todo;
+import com.users.tests.TodoTestBase;
 import com.users.util.Token;
 import com.users.util.UserCredentialsReader;
 import io.qameta.allure.Feature;
@@ -14,7 +15,7 @@ import org.junit.experimental.categories.Category;
 
 import static org.hamcrest.Matchers.hasKey;
 
-public class TodoTest {
+public class TodoTest extends TodoTestBase {
     public static Token token = new Token();
 
     protected String user_token = token.getToken();
@@ -28,7 +29,7 @@ public class TodoTest {
     public void getTodos(){
 
         RestAssured.given().header("Authorization","Bearer " + user_token)
-                .when().get("http://127.0.0.1:8001/api/todo/products")
+                .when().get("/todo/products")
                 .then().log().all();
     }
 
@@ -48,13 +49,13 @@ public class TodoTest {
                 .body("{\n" +
                         "    \"title\":\"create from Rest Assured\",\n" +
                         "    \"description\" :\"created from Rest \"\n" +
-                        "}").post("http://127.0.0.1:8001/api/create" ).then()
+                        "}").post("/create" ).then()
                 .body("$",hasKey("_id"))
                 .extract().path("_id").toString();
 
         //get object
         RestAssured.given().header("Authorization","Bearer " + user_token)
-                .when().get("http://127.0.0.1:8001/api/todo/products/" + todoId)
+                .when().get("/todo/products/" + todoId)
                 .then().log().all()
                 .statusCode(200);
 
@@ -76,7 +77,7 @@ public class TodoTest {
                 .body("{\n" +
                 "    \"title\":\"create from Rest Assured\",\n" +
                 "    \"description\" :\"created from Rest \"\n" +
-                "}").post("http://127.0.0.1:8001/api/create" ).then()
+                "}").post("/create" ).then()
                 .body("$",hasKey("_id"))
                 .extract().path("_id").toString();
 
@@ -85,7 +86,7 @@ public class TodoTest {
                 .header("Content-Type","application/json")
                 .header("Authorization","Bearer " + user_token)
                 .when()
-                .delete("http://127.0.0.1:8001/api/delete/" + todoId)
+                .delete("/delete/" + todoId)
                 .then().log().all();
 
     }
