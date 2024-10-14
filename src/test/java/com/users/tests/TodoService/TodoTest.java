@@ -2,6 +2,7 @@ package com.users.tests.TodoService;
 
 import com.users.tags.Regression;
 import com.users.tags.Todo;
+import com.users.util.Token;
 import com.users.util.UserCredentialsReader;
 import io.qameta.allure.Feature;
 import io.qameta.allure.Story;
@@ -14,10 +15,9 @@ import org.junit.experimental.categories.Category;
 import static org.hamcrest.Matchers.hasKey;
 
 public class TodoTest {
+    public static Token token = new Token();
 
-    public static UserCredentialsReader credentialsProp;
-
-    protected String token = getToken();
+    protected String user_token = token.getToken();
 
     @Category(Todo.class)
     @Story("get todo")
@@ -27,7 +27,7 @@ public class TodoTest {
     @Test
     public void getTodos(){
 
-        RestAssured.given().header("Authorization","Bearer " + token)
+        RestAssured.given().header("Authorization","Bearer " + user_token)
                 .when().get("http://127.0.0.1:8001/api/todo/products")
                 .then().log().all();
     }
@@ -43,7 +43,7 @@ public class TodoTest {
         //create object
         String todoId = RestAssured.given()
                 .header("Content-Type","application/json")
-                .header("Authorization","Bearer " + token)
+                .header("Authorization","Bearer " + user_token)
                 .when()
                 .body("{\n" +
                         "    \"title\":\"create from Rest Assured\",\n" +
@@ -53,7 +53,7 @@ public class TodoTest {
                 .extract().path("_id").toString();
 
         //get object
-        RestAssured.given().header("Authorization","Bearer " + token)
+        RestAssured.given().header("Authorization","Bearer " + user_token)
                 .when().get("http://127.0.0.1:8001/api/todo/products/" + todoId)
                 .then().log().all()
                 .statusCode(200);
@@ -71,7 +71,7 @@ public class TodoTest {
         //create
         String todoId = RestAssured.given()
                 .header("Content-Type","application/json")
-                .header("Authorization","Bearer " + token)
+                .header("Authorization","Bearer " + user_token)
                 .when()
                 .body("{\n" +
                 "    \"title\":\"create from Rest Assured\",\n" +
@@ -83,25 +83,11 @@ public class TodoTest {
         //delete
         RestAssured.given()
                 .header("Content-Type","application/json")
-                .header("Authorization","Bearer " + token)
+                .header("Authorization","Bearer " + user_token)
                 .when()
                 .delete("http://127.0.0.1:8001/api/delete/" + todoId)
                 .then().log().all();
 
     }
 
-    public String getToken(){
-
-        credentialsProp = UserCredentialsReader.getInstance();
-
-
-        return RestAssured.given()
-                .contentType("multipart/form-data")
-                .multiPart("username", credentialsProp.getProperty("userName"))
-                .multiPart("password", credentialsProp.getProperty("password"))
-                .when()
-                .post("http://127.0.0.1:8000/api/users/login").then()
-                .body("$",hasKey("access"))
-                .extract().path("access");
-    }
 }
