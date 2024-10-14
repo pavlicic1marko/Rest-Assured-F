@@ -1,8 +1,15 @@
 package com.users.tests.TodoService;
 
+import com.users.tags.Regression;
+import com.users.tags.Todo;
 import com.users.util.UserCredentialsReader;
+import io.qameta.allure.Feature;
+import io.qameta.allure.Story;
+import io.qameta.allure.junit4.DisplayName;
+import io.qameta.allure.junit4.Tag;
 import io.restassured.RestAssured;
 import org.junit.Test;
+import org.junit.experimental.categories.Category;
 
 import static org.hamcrest.Matchers.hasKey;
 
@@ -12,6 +19,11 @@ public class TodoTest {
 
     protected String token = getToken();
 
+    @Category(Todo.class)
+    @Story("get todo")
+    @DisplayName("Test Name")
+    @Feature("Todo")
+    @Tag("Todo")
     @Test
     public void getTodos(){
 
@@ -20,7 +32,11 @@ public class TodoTest {
                 .then().log().all();
     }
 
-
+    @Category(Todo.class)
+    @Story("get todo by id")
+    @DisplayName("Test Name")
+    @Feature("Todo")
+    @Tag("Todo")
     @Test
     public void getTodoById(){
 
@@ -44,6 +60,11 @@ public class TodoTest {
 
     }
 
+    @Category(Todo.class)
+    @Story("delete todo by id")
+    @DisplayName("Test Name")
+    @Feature("Todo")
+    @Tag("Todo")
     @Test
     public void CreateTodoAndDelete(){
 
