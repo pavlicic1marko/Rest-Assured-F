@@ -43,8 +43,8 @@ public class RequestFactory extends ProductsBaseClass {
        return restClient.doPostRequest(jsonInString, REGISTER_URL);
     }
 
-    public Response updateUserProfile(String user_token){
-         String bodyString ="{\"name\":\"Marko Pavlicicc\",\"email\":\"pavliciccmarko@yahoo.com\",\"password\":\"\"}";
+    public Response updateUserProfile(String user_token, String newEmail, String newPassword){
+         String bodyString ="{\"name\":\"Marko Pavlicicc\",\"email\":\"" + newEmail + "\",\"password\":\"" + newPassword + "\"}";
 
         return restClient.doPutRequest("/users/profile/update/", bodyString, user_token);
     }
