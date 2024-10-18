@@ -2,7 +2,9 @@ package com.users.requests;
 
 import com.fasterxml.jackson.core.JsonProcessingException;
 import com.fasterxml.jackson.databind.ObjectMapper;
+import com.github.javafaker.Faker;
 import com.users.pojo.StudentClass;
+import com.users.pojo.User;
 import com.users.tests.ProdictsBaseClass;
 import com.users.tests.TestBase;
 import io.qameta.allure.Step;
@@ -21,12 +23,28 @@ public class RequestFactory extends ProdictsBaseClass {
 
 
     @Step("Register User")
-    public Response registerUserEshop(String body){
+    public Response registerUserEshop(){
 
         String path= REGISTER_URL;
 
+        User user = new User();
+        Faker fakerApi = new Faker();
+        String username = fakerApi.name().firstName();
 
-       return restClient.doPostRequest(body, REGISTER_URL);
+        user.setName(username);
+        user.setPassword("Posao2018!");
+        user.setEmail(username + "@test.com");
+        ObjectMapper mapper = new ObjectMapper();
+        String jsonInString;
+        try {
+            jsonInString = mapper.writeValueAsString(user);
+        } catch (JsonProcessingException e) {
+            throw new RuntimeException(e);
+
+        }
+
+
+       return restClient.doPostRequest(jsonInString, REGISTER_URL);
     }
 
 /*

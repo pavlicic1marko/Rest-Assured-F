@@ -16,23 +16,9 @@ public class UserTests extends ProdictsBaseClass {
     @Test
     public void createUser(){
 
-        User user = new User();
-        Faker fakerApi = new Faker();
-        String username = fakerApi.name().firstName();
 
-        user.setName(username);
-        user.setPassword("Posao2018!");
-        user.setEmail(username + "@test.com");
-        ObjectMapper mapper = new ObjectMapper();
-        String jsonInString;
-        try {
-             jsonInString = mapper.writeValueAsString(user);
-        } catch (JsonProcessingException e) {
-            throw new RuntimeException(e);
 
-        }
-
-        requestFactory.registerUserEshop(jsonInString).then().log().all();
+        requestFactory.registerUserEshop().then().log().all();
 
     }
 
