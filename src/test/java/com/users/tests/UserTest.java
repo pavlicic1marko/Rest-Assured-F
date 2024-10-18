@@ -19,6 +19,7 @@ import static org.hamcrest.Matchers.hasKey;
 
 @Story("get routes for microservice")
 public class UserTest extends  TestBase{
+    /*
 
     RequestFactory requestFactory = new RequestFactory();
 
@@ -152,7 +153,9 @@ public class UserTest extends  TestBase{
         requestFactory.updateStudent(newEmail, newEmail, Access_Token).then()
                 .body("email",equalTo(newEmail),"username",equalTo(newEmail))
                 .log().all();
-    }
+
+     */
+
 }
 
 

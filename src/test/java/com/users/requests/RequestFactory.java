@@ -3,6 +3,7 @@ package com.users.requests;
 import com.fasterxml.jackson.core.JsonProcessingException;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import com.users.pojo.StudentClass;
+import com.users.tests.ProdictsBaseClass;
 import com.users.tests.TestBase;
 import io.qameta.allure.Step;
 import io.restassured.RestAssured;
@@ -12,13 +13,23 @@ import io.restassured.response.Response;
 import static com.users.constants.Constants.UrlConstants.*;
 
 
-public class RequestFactory extends TestBase {
+public class RequestFactory extends ProdictsBaseClass {
 
 
 
     RestClient restClient = new RestClient();
 
 
+    @Step("Register User")
+    public Response registerUserEshop(String body){
+
+        String path= REGISTER_URL;
+
+
+       return restClient.doPostRequest(body, REGISTER_URL);
+    }
+
+/*
     @Step("get all student information")
     public Response getAllUsers(){
         
@@ -95,7 +106,7 @@ public class RequestFactory extends TestBase {
 
         return restClient.doGetRequest(USER_PROFILE);
 
-    }
+    }*/
 
 
 }
