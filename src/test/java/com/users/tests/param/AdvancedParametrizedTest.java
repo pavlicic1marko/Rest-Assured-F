@@ -20,6 +20,7 @@ public class AdvancedParametrizedTest extends UserTestBase {
 
     RequestFactory requestFactory = new RequestFactory();
 
+
     @DataProvider
     public static Object[][] userData(){
         Faker fakerApi = new Faker();
@@ -31,6 +32,7 @@ public class AdvancedParametrizedTest extends UserTestBase {
       };
     }
 
+
     @DataProvider
     public static Object[][] dataProviderAdd(){
         return  new Object[][]{
@@ -38,9 +40,9 @@ public class AdvancedParametrizedTest extends UserTestBase {
         };
     }
 
+
     @UseDataProvider("dataProviderAdd")
     @Test
-
     public void firstTest(int num1, int num2){
         System.out.println(num1 +" OR "+ num2);
     }
@@ -52,9 +54,10 @@ public class AdvancedParametrizedTest extends UserTestBase {
     @UseDataProvider("userData")
     @Test
     public void registerUsers(String email, String firstName, String password){
-        requestFactory.registerUser(email ,firstName ,password, false).then().log().all();
-        System.out.println(email);
+        System.out.println("this is second test");
     }
+
+
     @Test
     public void secondTest(){
         System.out.println("this is second test");
