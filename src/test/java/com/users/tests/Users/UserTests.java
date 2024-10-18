@@ -3,7 +3,7 @@ package com.users.tests.Users;
 import com.fasterxml.jackson.core.JsonProcessingException;
 import com.github.javafaker.Faker;
 import com.users.pojo.User;
-import com.users.tests.TodoService.ProdictsBaseClass;
+import com.users.tests.ProdictsBaseClass;
 import io.restassured.RestAssured;
 import org.junit.Test;
 import com.fasterxml.jackson.databind.ObjectMapper;
