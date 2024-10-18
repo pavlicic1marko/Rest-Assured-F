@@ -1,6 +1,6 @@
 package com.users.tests.products;
 
-import com.users.tests.TodoService.ProdictsBaseClass;
+import com.users.tests.ProdictsBaseClass;
 import io.restassured.RestAssured;
 import org.junit.Test;
 
