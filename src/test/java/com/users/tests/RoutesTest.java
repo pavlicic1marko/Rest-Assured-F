@@ -14,7 +14,7 @@ import org.junit.experimental.categories.Category;
 import static org.hamcrest.Matchers.equalTo;
 
 
-public class RoutesTest extends  TestBase{
+public class RoutesTest extends  UserTestBase{
 
     RequestFactory requestFactory = new RequestFactory();
 

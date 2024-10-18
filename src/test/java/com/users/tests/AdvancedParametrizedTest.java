@@ -15,7 +15,7 @@ import org.junit.experimental.categories.Category;
 import org.junit.runner.RunWith;
 
 @RunWith(DataProviderRunner.class)
-public class AdvancedParametrizedTest extends TestBase{
+public class AdvancedParametrizedTest extends UserTestBase{
 
     RequestFactory requestFactory = new RequestFactory();
 

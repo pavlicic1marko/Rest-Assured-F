@@ -11,7 +11,7 @@ import org.junit.experimental.categories.Category;
 
 import static org.hamcrest.Matchers.equalTo;
 
-public class CommsTest extends TestBase{
+public class CommsTest extends UserTestBase{
 
 
     RestClient restClient  = new RestClient();

@@ -1,4 +1,4 @@
 package com.users.tests;
 
-public class UserTestBase {
+public class UserTestBase extends TestBase{
 }
