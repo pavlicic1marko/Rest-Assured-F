@@ -1,4 +1,4 @@
-package com.users.tests.TodoService;
+package com.users.tests;
 
 import com.users.util.PropertyReader;
 import com.users.util.UserCredentialsReader;
