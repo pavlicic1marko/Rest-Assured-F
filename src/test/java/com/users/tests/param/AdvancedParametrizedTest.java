@@ -6,7 +6,7 @@ import com.tngtech.java.junit.dataprovider.DataProviderRunner;
 import com.tngtech.java.junit.dataprovider.UseDataProvider;
 import com.users.requests.RequestFactory;
 import com.users.tags.Regression;
-import com.users.tests.UserTestBase;
+import com.users.tests.ProductsBaseClass;
 import io.qameta.allure.Feature;
 import io.qameta.allure.Story;
 import io.qameta.allure.junit4.DisplayName;
@@ -16,7 +16,7 @@ import org.junit.experimental.categories.Category;
 import org.junit.runner.RunWith;
 
 @RunWith(DataProviderRunner.class)
-public class AdvancedParametrizedTest extends UserTestBase {
+public class AdvancedParametrizedTest extends ProductsBaseClass {
 
     RequestFactory requestFactory = new RequestFactory();
 

@@ -18,7 +18,7 @@ import static org.hamcrest.Matchers.hasKey;
 
 
 @Story("get routes for microservice")
-public class UserTest extends  TestBase{
+public class UserTest extends  ProductsBaseClass{
     /*
 
     RequestFactory requestFactory = new RequestFactory();
