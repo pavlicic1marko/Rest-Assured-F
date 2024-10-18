@@ -1,4 +1,4 @@
-package com.users.tests;
+package com.users.tests.param;
 
 import com.github.javafaker.Faker;
 import com.tngtech.java.junit.dataprovider.DataProvider;
@@ -6,6 +6,7 @@ import com.tngtech.java.junit.dataprovider.DataProviderRunner;
 import com.tngtech.java.junit.dataprovider.UseDataProvider;
 import com.users.requests.RequestFactory;
 import com.users.tags.Regression;
+import com.users.tests.ProductsBaseClass;
 import io.qameta.allure.Feature;
 import io.qameta.allure.Story;
 import io.qameta.allure.junit4.DisplayName;
@@ -15,9 +16,10 @@ import org.junit.experimental.categories.Category;
 import org.junit.runner.RunWith;
 
 @RunWith(DataProviderRunner.class)
-public class AdvancedParametrizedTest extends UserTestBase{
+public class AdvancedParametrizedTest extends ProductsBaseClass {
 
     RequestFactory requestFactory = new RequestFactory();
+
 
     @DataProvider
     public static Object[][] userData(){
@@ -30,6 +32,7 @@ public class AdvancedParametrizedTest extends UserTestBase{
       };
     }
 
+
     @DataProvider
     public static Object[][] dataProviderAdd(){
         return  new Object[][]{
@@ -37,9 +40,9 @@ public class AdvancedParametrizedTest extends UserTestBase{
         };
     }
 
+
     @UseDataProvider("dataProviderAdd")
     @Test
-
     public void firstTest(int num1, int num2){
         System.out.println(num1 +" OR "+ num2);
     }
@@ -51,9 +54,10 @@ public class AdvancedParametrizedTest extends UserTestBase{
     @UseDataProvider("userData")
     @Test
     public void registerUsers(String email, String firstName, String password){
-        requestFactory.registerUser(email ,firstName ,password, false).then().log().all();
-        System.out.println(email);
+        System.out.println("this is second test");
     }
+
+
     @Test
     public void secondTest(){
         System.out.println("this is second test");

@@ -1,4 +1,4 @@
-package com.users.tests.TodoService;
+package com.users.tests;
 
 import com.users.util.PropertyReader;
 import com.users.util.UserCredentialsReader;
@@ -11,7 +11,7 @@ import org.junit.runner.Description;
 
 import static org.hamcrest.Matchers.hasKey;
 
-public class ProdictsBaseClass {
+public class ProductsBaseClass {
 
 
 

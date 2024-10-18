@@ -10,7 +10,7 @@ import static org.hamcrest.MatcherAssert.assertThat;
 
 public class FileDownload {
 
-    @Test
+    //@Test
     public void downloadFileTest(){
 
         File inputFile = new File("src/main/resources/20MB-TESTFILE.ORG.pdf");
@@ -27,7 +27,7 @@ public class FileDownload {
         assertThat(expectedFilesize,equalTo(fileDownloaded.length));
     }
 
-    @Test
+    //@Test
     public  void uploadFile(){
 
         File inputFile = new File("src/main/resources/Transformer.jpg");

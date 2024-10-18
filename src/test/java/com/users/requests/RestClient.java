@@ -1,14 +1,14 @@
 package com.users.requests;
 
 import com.users.specs.SpecificationFactory;
-import com.users.tests.TestBase;
+import com.users.tests.ProductsBaseClass;
 import io.restassured.RestAssured;
 import io.restassured.http.ContentType;
 import io.restassured.response.Response;
 
 import static com.users.constants.Constants.UrlConstants.USER_DELETE;
 
-public class RestClient extends TestBase {
+public class RestClient extends ProductsBaseClass {
 
 
 
@@ -45,5 +45,13 @@ public class RestClient extends TestBase {
                 .when()
                 .body(body)
                 .patch(path);
+    }
+
+    public Response doPostRequest(String body, String path){
+        return RestAssured
+                .given().header("Content-Type","application/json")
+                .when()
+                .body(body)
+                .post(path);
     }
 }
