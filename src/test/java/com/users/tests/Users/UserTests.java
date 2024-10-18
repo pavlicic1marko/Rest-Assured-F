@@ -15,7 +15,13 @@ public class UserTests extends ProductsBaseClass {
 
     @Test
     public void updateUser(){
-        requestFactory.updateUserProfile().then().log().all();
+
+        //create user
+        String user_token =  requestFactory.registerUserEshop().then().extract().path("token");
+        System.out.println("user token is:" + user_token);
+
+        //update user
+        requestFactory.updateUserProfile(user_token).then().log().all();
 
     }
 
