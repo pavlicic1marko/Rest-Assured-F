@@ -22,7 +22,6 @@ public class RequestFactory extends ProductsBaseClass {
     @Step("Register User")
     public Response registerUserEshop(){
 
-        String path= REGISTER_URL;
 
         User user = new User();
         Faker fakerApi = new Faker();
@@ -42,6 +41,12 @@ public class RequestFactory extends ProductsBaseClass {
 
 
        return restClient.doPostRequest(jsonInString, REGISTER_URL);
+    }
+
+    public Response updateUserProfile(){
+         String bodyString ="{\"id\":10,\"name\":\"Marko Pavlicicc\",\"email\":\"pavlicicmarko@yahoo.com\",\"password\":\"\"}";
+
+        return restClient.doPutRequest("/users/profile/update/", bodyString, getToken());
     }
 
 /*

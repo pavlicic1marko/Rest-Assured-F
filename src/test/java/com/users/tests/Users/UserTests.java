@@ -13,5 +13,10 @@ public class UserTests extends ProductsBaseClass {
         requestFactory.registerUserEshop().then().log().all();
     }
 
+    @Test
+    public void updateUser(){
+        requestFactory.updateUserProfile().then().log().all();
+
+    }
 
 }
