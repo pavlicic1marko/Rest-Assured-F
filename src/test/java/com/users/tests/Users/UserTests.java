@@ -15,11 +15,7 @@ public class UserTests extends ProdictsBaseClass {
     RequestFactory requestFactory = new RequestFactory();
     @Test
     public void createUser(){
-
-
-
         requestFactory.registerUserEshop().then().log().all();
-
     }
 
 
