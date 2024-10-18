@@ -11,7 +11,7 @@ import org.junit.runner.Description;
 
 import static org.hamcrest.Matchers.hasKey;
 
-public class ProdictsBaseClass {
+public class ProductsBaseClass {
 
 
 

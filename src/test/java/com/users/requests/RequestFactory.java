@@ -3,19 +3,16 @@ package com.users.requests;
 import com.fasterxml.jackson.core.JsonProcessingException;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import com.github.javafaker.Faker;
-import com.users.pojo.StudentClass;
 import com.users.pojo.User;
-import com.users.tests.ProdictsBaseClass;
-import com.users.tests.TestBase;
+import com.users.tests.ProductsBaseClass;
 import io.qameta.allure.Step;
-import io.restassured.RestAssured;
 import io.restassured.response.Response;
 
 
 import static com.users.constants.Constants.UrlConstants.*;
 
 
-public class RequestFactory extends ProdictsBaseClass {
+public class RequestFactory extends ProductsBaseClass {
 
 
 

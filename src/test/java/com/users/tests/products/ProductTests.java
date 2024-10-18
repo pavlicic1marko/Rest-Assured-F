@@ -1,11 +1,11 @@
 package com.users.tests.products;
 
-import com.users.tests.ProdictsBaseClass;
+import com.users.tests.ProductsBaseClass;
 import io.restassured.RestAssured;
 import org.junit.Test;
 
 
-public class ProductTests extends ProdictsBaseClass {
+public class ProductTests extends ProductsBaseClass {
 
     @Test
     public void getAllProducts(){

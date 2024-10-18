@@ -1,16 +1,11 @@
 package com.users.tests.Users;
 
-import com.fasterxml.jackson.core.JsonProcessingException;
-import com.github.javafaker.Faker;
-import com.users.pojo.User;
 import com.users.requests.RequestFactory;
-import com.users.tests.ProdictsBaseClass;
-import io.restassured.RestAssured;
+import com.users.tests.ProductsBaseClass;
 import org.junit.Test;
-import com.fasterxml.jackson.databind.ObjectMapper;
 
 
-public class UserTests extends ProdictsBaseClass {
+public class UserTests extends ProductsBaseClass {
 
     RequestFactory requestFactory = new RequestFactory();
     @Test

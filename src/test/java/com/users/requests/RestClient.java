@@ -1,15 +1,14 @@
 package com.users.requests;
 
 import com.users.specs.SpecificationFactory;
-import com.users.tests.ProdictsBaseClass;
-import com.users.tests.TestBase;
+import com.users.tests.ProductsBaseClass;
 import io.restassured.RestAssured;
 import io.restassured.http.ContentType;
 import io.restassured.response.Response;
 
 import static com.users.constants.Constants.UrlConstants.USER_DELETE;
 
-public class RestClient extends ProdictsBaseClass {
+public class RestClient extends ProductsBaseClass {
 
 
 
