@@ -58,6 +58,7 @@ public class ProductTests extends ProductsBaseClass {
 
         String productId = requestFactory.createProduct().then().statusCode(200).log().all().extract().path("_id").toString();
 
+        requestFactory.getProductById(productId).then().statusCode(200);
 
         requestFactory.deleteProduct(productId).then().log().all().statusCode(200);
     }
