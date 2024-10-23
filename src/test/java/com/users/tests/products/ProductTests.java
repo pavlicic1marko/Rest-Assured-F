@@ -47,7 +47,11 @@ public class ProductTests extends ProductsBaseClass {
 
     @Test
     public void uploadImage(){
-        requestFactory.uploadProductImage().then().log().all();
+
+        int productId = requestFactory.createProduct().then().statusCode(200).log().all().extract().path("_id");
+
+
+        requestFactory.uploadProductImage(productId).then().log().all();
     }
 
     @Test

@@ -28,13 +28,13 @@ public class RequestFactory extends ProductsBaseClass {
     }
 
     @Step("Upload product image")
-    public Response uploadProductImage(){
+    public Response uploadProductImage(int productId){
 
         File inputFileImage = new File("src/main/resources/sega-mega.jpg");
 
         return RestAssured
                 .given().contentType("multipart/form-data")
-                .multiPart("product_id", 40)
+                .multiPart("product_id", productId)
                 .multiPart("image", inputFileImage)
                 .header("Authorization","Bearer " + getToken())
                 .when()
