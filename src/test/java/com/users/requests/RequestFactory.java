@@ -41,7 +41,8 @@ public class RequestFactory extends ProductsBaseClass {
 
     @Step("delete product")
     public Response deleteProduct(String id){
-        return restClient.doDeleteRequest("/api/products/delete/" + id + "/");
+
+        return restClient.doDeleteRequest("/products/delete/" + id + "/");
     }
 
 

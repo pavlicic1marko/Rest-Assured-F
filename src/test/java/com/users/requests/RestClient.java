@@ -33,6 +33,7 @@ public class RestClient extends ProductsBaseClass {
 
         return RestAssured
                 .given()
+                .header("Authorization","Bearer " + getToken())
                 .when()
                 .delete(path);
     }

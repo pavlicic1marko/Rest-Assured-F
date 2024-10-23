@@ -54,6 +54,11 @@ public class ProductTests extends ProductsBaseClass {
     }
 
     @Test
-    public void deleteProduct(){
+    public void deleteProduct() {
+
+        String productId = requestFactory.createProduct().then().statusCode(200).log().all().extract().path("_id").toString();
+
+
+        requestFactory.deleteProduct(productId).then().log().all().statusCode(200);
     }
 }
