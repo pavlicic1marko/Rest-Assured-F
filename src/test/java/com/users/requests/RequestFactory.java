@@ -24,6 +24,21 @@ public class RequestFactory extends ProductsBaseClass {
 
     }
 
+    @Step("get product by ID")
+    public Response getProductById(String productId){
+        return restClient.doGetRequest("/products/" + productId);
+    }
+
+    @Step("get top products")
+    public Response getTopProducts(){
+        return restClient.doGetRequest("/products/top/");
+    }
+
+    @Step("get products by keywords")
+    public Response getProductsByKeyword(String keyword, String page){
+        return restClient.doGetRequest("/products/?keyword=" + keyword + "&page=" +page);
+    }
+
 
     @Step("Register User")
     public Response registerUserEshop(){
