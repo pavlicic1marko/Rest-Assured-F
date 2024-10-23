@@ -25,7 +25,7 @@ public class ProductsBaseClass {
 
 
         return RestAssured.given().header("Content-Type","application/json")
-                    .body("{\"username\":\"pavlicicmarko@yahoo.com\",\"password\":\"Posao2018!\"}")
+                    .body("{\"username\":\"marko@test.com\",\"password\":\"Posao2018!\"}")
                     .when()
                     .post("http://127.0.0.1:8000/api/users/login/").then().body("$",hasKey("access"))
                     .extract().path("token");

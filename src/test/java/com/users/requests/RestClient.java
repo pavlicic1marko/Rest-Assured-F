@@ -6,7 +6,6 @@ import io.restassured.RestAssured;
 import io.restassured.http.ContentType;
 import io.restassured.response.Response;
 
-import static com.users.constants.Constants.UrlConstants.USER_DELETE;
 
 public class RestClient extends ProductsBaseClass {
 
@@ -30,12 +29,12 @@ public class RestClient extends ProductsBaseClass {
                 .put(path);
     }
 
-    public Response doDeleteRequest(String userEmail){
+    public Response doDeleteRequest(String path){
 
         return RestAssured
                 .given()
                 .when()
-                .delete(USER_DELETE + userEmail);
+                .delete(path);
     }
 
     public Response doPatchRequest(String path, Object body){
@@ -50,6 +49,7 @@ public class RestClient extends ProductsBaseClass {
     public Response doPostRequest(String body, String path){
         return RestAssured
                 .given().header("Content-Type","application/json")
+                .header("Authorization","Bearer " + getToken())
                 .when()
                 .body(body)
                 .post(path);

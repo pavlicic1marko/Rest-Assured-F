@@ -38,6 +38,7 @@ public class ProductTests extends ProductsBaseClass {
 
     @Test
     public void createProduct(){
+        requestFactory.createProduct().then().log().all();
     }
 
     @Test
