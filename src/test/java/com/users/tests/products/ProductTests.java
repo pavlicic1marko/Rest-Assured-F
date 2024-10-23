@@ -47,6 +47,7 @@ public class ProductTests extends ProductsBaseClass {
 
     @Test
     public void uploadImage(){
+        requestFactory.uploadProductImage().then().log().all();
     }
 
     @Test

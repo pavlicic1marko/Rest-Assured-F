@@ -6,8 +6,11 @@ import com.github.javafaker.Faker;
 import com.users.pojo.User;
 import com.users.tests.ProductsBaseClass;
 import io.qameta.allure.Step;
+import io.restassured.RestAssured;
 import io.restassured.response.Response;
 
+
+import java.io.File;
 
 import static com.users.constants.Constants.UrlConstants.*;
 
@@ -26,7 +29,16 @@ public class RequestFactory extends ProductsBaseClass {
 
     @Step("Upload product image")
     public Response uploadProductImage(){
-        return restClient.doPostRequest("","");
+
+        File inputFileImage = new File("src/main/resources/sega-mega.jpg");
+
+        return RestAssured
+                .given().contentType("multipart/form-data")
+                .multiPart("product_id", 40)
+                .multiPart("image", inputFileImage)
+                .header("Authorization","Bearer " + getToken())
+                .when()
+                .post("/products/upload/");
     }
 
     @Step("Create product review")
