@@ -28,10 +28,31 @@ public class ProductTests extends ProductsBaseClass {
 
     /**
      This method gets all products that match the search string
-     */    @Test
+     */
+    @Test
     public void getProductsByKeyword(){
         String keyword = "mouse";
         String page= "1";
         requestFactory.getProductsByKeyword(keyword, page).then().log().all();
+    }
+
+    @Test
+    public void createProduct(){
+    }
+
+    @Test
+    public void uploadImage(){
+    }
+
+    @Test
+    public void createProductReview(){
+    }
+
+    @Test
+    public void updateProduct(){
+    }
+
+    @Test
+    public void deleteProduct(){
     }
 }

@@ -18,6 +18,33 @@ public class RequestFactory extends ProductsBaseClass {
 
     RestClient restClient = new RestClient();
 
+//Products Requests
+    @Step("create product")
+    public Response createProduct(){
+        return  restClient.doPostRequest("","/products/create/");
+    }
+
+    @Step("Upload product image")
+    public Response uploadProductImage(){
+        return restClient.doPostRequest("","");
+    }
+
+    @Step("Create product review")
+    public Response createProductReview(){
+        return restClient.doPostRequest("","");
+    }
+
+    @Step("update product")
+    public Response updateProduct(){
+        return restClient.doPutRequest("","","");
+    }
+
+    @Step("delete product")
+    public Response deleteProduct(){
+        return restClient.doDeleteRequest("");
+    }
+
+
     @Step("get all products")
     public Response getAllProducts(){
         return restClient.doGetRequest("/products");
@@ -39,7 +66,7 @@ public class RequestFactory extends ProductsBaseClass {
         return restClient.doGetRequest("/products/?keyword=" + keyword + "&page=" +page);
     }
 
-
+// User Requests
     @Step("Register User")
     public Response registerUserEshop(){
 
