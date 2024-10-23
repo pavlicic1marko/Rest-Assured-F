@@ -35,8 +35,8 @@ public class RequestFactory extends ProductsBaseClass {
     }
 
     @Step("update product")
-    public Response updateProduct(){
-        return restClient.doPutRequest("","","");
+    public Response updateProduct(String productId, String body){
+        return restClient.doPutRequest("/products/update/" + productId + "/",body);
     }
 
     @Step("delete product")
@@ -95,7 +95,7 @@ public class RequestFactory extends ProductsBaseClass {
     public Response updateUserProfile(String user_token, String newEmail, String newPassword){
          String bodyString ="{\"name\":\"Marko Pavlicicc\",\"email\":\"" + newEmail + "\",\"password\":\"" + newPassword + "\"}";
 
-        return restClient.doPutRequest("/users/profile/update/", bodyString, user_token);
+        return restClient.doPutRequest("/users/profile/update/", bodyString);
     }
 
 /*

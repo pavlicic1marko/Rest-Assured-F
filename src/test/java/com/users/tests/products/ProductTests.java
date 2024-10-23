@@ -1,5 +1,8 @@
 package com.users.tests.products;
 
+import com.fasterxml.jackson.core.JsonProcessingException;
+import com.fasterxml.jackson.databind.ObjectMapper;
+import com.users.pojo.Product;
 import com.users.requests.RequestFactory;
 import com.users.tests.ProductsBaseClass;
 import org.junit.Test;
@@ -51,6 +54,25 @@ public class ProductTests extends ProductsBaseClass {
 
     @Test
     public void updateProduct(){
+        Product product = new Product();
+        product.setName("new Name");
+        product.setBrand("new Brand");
+        product.setCategory("new Category");
+        product.setDescription("new Description");
+
+        String productId = requestFactory.createProduct().then().statusCode(200).log().all().extract().path("_id").toString();
+
+        String jsonInString;
+
+        ObjectMapper mapper = new ObjectMapper();
+        try {
+            jsonInString = mapper.writeValueAsString(product);
+        } catch (JsonProcessingException e) {
+            throw new RuntimeException(e);
+
+        }
+
+        requestFactory.updateProduct(productId, jsonInString).then().log().all();
     }
 
     @Test

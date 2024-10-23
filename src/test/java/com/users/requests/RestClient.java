@@ -19,9 +19,9 @@ public class RestClient extends ProductsBaseClass {
                 .get(requestPath);
     }
 
-    public Response doPutRequest(String path, Object body, String newToken){
+    public Response doPutRequest(String path, Object body){
 
-        return RestAssured.given().header("Authorization", "Bearer "+ newToken)
+        return RestAssured.given().header("Authorization", "Bearer "+ getToken())
                 .contentType(ContentType.JSON)
                //.spec(SpecificationFactory.logPayloadResponseInfo())
                 .when()
