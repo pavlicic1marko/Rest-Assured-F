@@ -30,8 +30,8 @@ public class RequestFactory extends ProductsBaseClass {
     }
 
     @Step("Create product review")
-    public Response createProductReview(){
-        return restClient.doPostRequest("","");
+    public Response createProductReview(String productId, String reviewJson){
+        return restClient.doPostRequest(reviewJson,"/products/" + productId + "/reviews/");
     }
 
     @Step("update product")
