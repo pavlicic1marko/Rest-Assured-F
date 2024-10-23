@@ -18,6 +18,12 @@ public class RequestFactory extends ProductsBaseClass {
 
     RestClient restClient = new RestClient();
 
+    @Step("get all products")
+    public Response getAllProducts(){
+        return restClient.doGetRequest("/products");
+
+    }
+
 
     @Step("Register User")
     public Response registerUserEshop(){
