@@ -28,6 +28,8 @@ public class OrdersTests extends ProductsBaseClass {
 
     @Test
     public void getOrderById(){
+        String orderId ="12";
+        requestFactory.getOrderById(orderId).then().log().all().statusCode(200);
     }
 
     @Test

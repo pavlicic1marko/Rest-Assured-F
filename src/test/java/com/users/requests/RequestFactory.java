@@ -136,6 +136,10 @@ public class RequestFactory extends ProductsBaseClass {
         return restClient.doGetRequest("/orders/");
     }
 
+    public Response getOrderById(String orderID) {
+        return restClient.doGetRequest("/orders/" + orderID + "/");
+    }
+
 /*
     @Step("get all student information")
     public Response getAllUsers(){
