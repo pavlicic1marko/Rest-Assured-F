@@ -26,9 +26,9 @@ public class OrdersTests extends ProductsBaseClass {
     }
 
     @Test
-    public void updateOrdersToDelivered(){
+    public void updateOrdersToPayed(){
         String orderId ="33";
-        requestFactory.updateOrderToDelivered(orderId).then().log().all().statusCode(200);
+        requestFactory.updateOrderToPayed(orderId).then().log().all().statusCode(200);
     }
 
     @Test
@@ -38,6 +38,8 @@ public class OrdersTests extends ProductsBaseClass {
     }
 
     @Test
-    public void updateOrderToPaid(){
+    public void updateOrderToDeliveredTest(){
+        String orderId ="33";
+        requestFactory.updateOrderToDelevired(orderId).then().log().all().statusCode(200);
     }
 }

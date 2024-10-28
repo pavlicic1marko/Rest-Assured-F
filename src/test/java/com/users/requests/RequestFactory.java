@@ -152,6 +152,10 @@ public class RequestFactory extends ProductsBaseClass {
         return restClient.doPutRequest("/orders/" + orderId  + "/pay/","");
     }
 
+    public Response updateOrderToDelevired(String orderId){
+        return restClient.doPutRequest("/orders/" + orderId  + "/deliver/","");
+    }
+
 
 
 /*
