@@ -130,6 +130,11 @@ public class RequestFactory extends ProductsBaseClass {
         return  restClient.doDeleteRequest("/users/delete/" + userId + "/");
     }
 
+    //Order requests
+
+    public Response getOrders(){
+        return restClient.doGetRequest("/orders/");
+    }
 
 /*
     @Step("get all student information")

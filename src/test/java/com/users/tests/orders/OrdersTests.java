@@ -1,11 +1,17 @@
 package com.users.tests.orders;
 
+import com.users.requests.RequestFactory;
+import com.users.tests.ProductsBaseClass;
 import org.junit.Test;
 
-public class OrdersTests {
+public class OrdersTests extends ProductsBaseClass {
+
+    RequestFactory requestFactory = new RequestFactory();
+
 
     @Test
     public void getOrders(){
+        requestFactory.getOrders().then().log().all().statusCode(200);
     }
 
     @Test
