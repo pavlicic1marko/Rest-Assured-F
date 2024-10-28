@@ -27,6 +27,8 @@ public class OrdersTests extends ProductsBaseClass {
 
     @Test
     public void updateOrdersToDelivered(){
+        String orderId ="33";
+        requestFactory.updateOrderToDelivered(orderId).then().log().all().statusCode(200);
     }
 
     @Test
