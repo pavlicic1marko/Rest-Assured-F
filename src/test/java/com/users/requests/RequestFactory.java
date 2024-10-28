@@ -140,6 +140,14 @@ public class RequestFactory extends ProductsBaseClass {
         return restClient.doGetRequest("/orders/" + orderID + "/");
     }
 
+    public Response addOrder(String orderJson) {
+        return restClient.doPostRequest(orderJson,"/orders/add/");
+    }
+
+    public Response getMyOrders(){
+        return restClient.doGetRequest("/orders/myorders/");
+    }
+
 /*
     @Step("get all student information")
     public Response getAllUsers(){
