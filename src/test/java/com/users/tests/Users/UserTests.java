@@ -68,6 +68,7 @@ public class UserTests extends ProductsBaseClass {
 
         user.setName(username);
         user.setEmail(username + "updated@test.com");
+        user.setIsAdmin(true);
         ObjectMapper mapper = new ObjectMapper();
         String jsonInString;
         try {
@@ -76,7 +77,7 @@ public class UserTests extends ProductsBaseClass {
             throw new RuntimeException(e);
 
         }
-        requestFactory.updateUser(jsonInString).then().log().all();
+        requestFactory.updateUser(jsonInString, userId).then().log().all().statusCode(200);
 
     }
 
