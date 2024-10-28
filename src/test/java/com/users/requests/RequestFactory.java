@@ -110,6 +110,27 @@ public class RequestFactory extends ProductsBaseClass {
         return restClient.doPutRequest("/users/profile/update/", bodyString);
     }
 
+    public Response getUserProfile(){
+        return restClient.doGetRequest("/users/profile/");
+    }
+
+    public Response getUsers(){
+        return restClient.doGetRequest("/users/");
+    }
+
+    public Response getUsersById(String userId){
+        return restClient.doGetRequest("/users/" + userId + "/");
+    }
+
+    public Response updateUser(String body, String userId){
+        return restClient.doPutRequest("/users/update/" + userId + "/", body);
+    }
+
+    public Response deleteUser(String userId){
+        return  restClient.doDeleteRequest("/users/delete/" + userId + "/");
+    }
+
+
 /*
     @Step("get all student information")
     public Response getAllUsers(){

@@ -4,8 +4,16 @@ public class User {
 
     private String name;
     private String email;
-
     private String password;
+    private Boolean isAdmin;
+
+    public Boolean getIsAdmin() {
+        return isAdmin;
+    }
+
+    public void setIsAdmin(Boolean admin) {
+        isAdmin = admin;
+    }
 
     public String getName() {
         return name;
