@@ -148,9 +148,11 @@ public class RequestFactory extends ProductsBaseClass {
         return restClient.doGetRequest("/orders/myorders/");
     }
 
-    public Response updateOrderToDelivered(String orderId){
+    public Response updateOrderToPayed(String orderId){
         return restClient.doPutRequest("/orders/" + orderId  + "/pay/","");
     }
+
+
 
 /*
     @Step("get all student information")
