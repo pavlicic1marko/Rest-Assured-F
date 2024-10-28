@@ -15,7 +15,7 @@ public class UserTests extends ProductsBaseClass {
     }
 
     @Test
-    public void updateUser(){
+    public void updateUserProfile(){
 
         Faker faker = new Faker();
         String newEmail = faker.name().username() + "@test.com";
@@ -29,4 +29,28 @@ public class UserTests extends ProductsBaseClass {
 
     }
 
+    @Test
+    public void getUserProfile(){
+
+    }
+
+    @Test
+    public void getUsers(){
+
+    }
+
+    @Test
+    public void getUsersById(){
+
+    }
+
+    @Test
+    public void updateUser(){
+
+    }
+
+    @Test
+    public void deleteUser(){
+
+    }
 }
