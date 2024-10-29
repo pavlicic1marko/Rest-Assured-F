@@ -159,11 +159,11 @@ public class ProductTests extends BaseClass {
 
     }
 
-    @Category({Regression.class})
+    @Category({Regression.class, Smoke.class})
     @Story("update product")
     @DisplayName("update product")
     @Feature("Product")
-    @Tag("Regression")
+    @Tag("Regression, Smoke")
     @Test
     public void updateProduct(){
         Product product = new Product();
