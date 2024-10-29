@@ -41,8 +41,8 @@ public class UserRequestFactory extends BaseClass {
         return restClient.doPostRequest(jsonInString, REGISTER_URL);
     }
 
-    public Response updateUserProfile(String user_token, String newEmail, String newPassword){
-        String bodyString ="{\"name\":\"Marko Pavlicicc\",\"email\":\"" + newEmail + "\",\"password\":\"" + newPassword + "\"}";
+    public Response updateUserProfile(String user_token, String newEmail, String newPassword, String newName){
+        String bodyString ="{\"name\":\""+ newName +"\",\"email\":\"" + newEmail + "\",\"password\":\"" + newPassword + "\"}";
 
 
         return  RestAssured.given().header("Authorization", "Bearer "+ user_token)
@@ -73,31 +73,6 @@ public class UserRequestFactory extends BaseClass {
         return  restClient.doDeleteRequest("/users/delete/" + userId + "/");
     }
 
-    //Order requests
-
-    public Response getOrders(){
-        return restClient.doGetRequest("/orders/");
-    }
-
-    public Response getOrderById(String orderID) {
-        return restClient.doGetRequest("/orders/" + orderID + "/");
-    }
-
-    public Response addOrder(String orderJson) {
-        return restClient.doPostRequest(orderJson,"/orders/add/");
-    }
-
-    public Response getMyOrders(){
-        return restClient.doGetRequest("/orders/myorders/");
-    }
-
-    public Response updateOrderToPayed(String orderId){
-        return restClient.doPutRequest("/orders/" + orderId  + "/pay/","");
-    }
-
-    public Response updateOrderToDelevired(String orderId){
-        return restClient.doPutRequest("/orders/" + orderId  + "/deliver/","");
-    }
 
 
 }

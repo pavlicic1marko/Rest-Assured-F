@@ -39,6 +39,7 @@ public class UserTests extends BaseClass {
     public void updateUserProfile(){
 
         Faker faker = new Faker();
+        String newName = faker.name().username();
         String newEmail = faker.name().username() + "@test.com";
 
         //create user
@@ -46,7 +47,7 @@ public class UserTests extends BaseClass {
         System.out.println("user token is:" + user_token);
 
         //update user
-        requestFactory.updateUserProfile(user_token, newEmail, "12345678!").then().log().all();
+        requestFactory.updateUserProfile(user_token, newEmail, "12345678!", newName).then().log().all();
 
     }
 
