@@ -4,7 +4,6 @@ import com.github.javafaker.Faker;
 import com.tngtech.java.junit.dataprovider.DataProvider;
 import com.tngtech.java.junit.dataprovider.DataProviderRunner;
 import com.tngtech.java.junit.dataprovider.UseDataProvider;
-import com.users.requests.RequestFactory;
 import com.users.tags.Regression;
 import com.users.tests.ProductsBaseClass;
 import io.qameta.allure.Feature;
@@ -18,7 +17,6 @@ import org.junit.runner.RunWith;
 @RunWith(DataProviderRunner.class)
 public class AdvancedParametrizedTest extends ProductsBaseClass {
 
-    RequestFactory requestFactory = new RequestFactory();
 
 
     @DataProvider
