@@ -5,14 +5,26 @@ import com.fasterxml.jackson.databind.ObjectMapper;
 import com.users.pojo.Product;
 import com.users.pojo.Review;
 import com.users.requests.factory.RequestFactory;
+import com.users.tags.Regression;
+import com.users.tags.Smoke;
 import com.users.tests.BaseClass;
+import io.qameta.allure.Feature;
+import io.qameta.allure.Story;
+import io.qameta.allure.junit4.DisplayName;
+import io.qameta.allure.junit4.Tag;
 import org.junit.Test;
+import org.junit.experimental.categories.Category;
 
 
 public class ProductTests extends BaseClass {
 
     RequestFactory requestFactory = new RequestFactory();
     /** creating second review should not be possible, negative testing*/
+    @Category({Regression.class})
+    @Story("crete second review")
+    @DisplayName("create second reviewer")
+    @Feature("review")
+    @Tag("Regression")
     @Test
     public void createTwoReviewsBySameUser(){
         //create product
@@ -48,17 +60,32 @@ public class ProductTests extends BaseClass {
     }
 
 
+    @Category({Regression.class})
+    @Story("get all products")
+    @DisplayName("get all products")
+    @Feature("Products")
+    @Tag("Regression")
     @Test
     public void getAllProducts(){
         requestFactory.getAllProducts().then().log().all();
     }
 
+    @Category({Regression.class})
+    @Story("get  product by id")
+    @DisplayName("get product by id")
+    @Feature("Products")
+    @Tag("Regression")
     @Test
     public void getProductById(){
         String productId = "6";
         requestFactory.getProductById(productId).then().log().all();
     }
 
+    @Category({Regression.class})
+    @Story("get  product top")
+    @DisplayName("get product top")
+    @Feature("Products")
+    @Tag("Regression")
     @Test
     public void getTopProducts(){
         requestFactory.getTopProducts().then().log().all();
@@ -67,6 +94,11 @@ public class ProductTests extends BaseClass {
     /**
      This method gets all products that match the search string
      */
+    @Category({Regression.class})
+    @Story("Search for product by keyword")
+    @DisplayName("Search for product by keyword")
+    @Feature("Products")
+    @Tag("Regression")
     @Test
     public void getProductsByKeyword(){
         String keyword = "mouse";
@@ -74,11 +106,21 @@ public class ProductTests extends BaseClass {
         requestFactory.getProductsByKeyword(keyword, page).then().log().all();
     }
 
+    @Category({Regression.class})
+    @Story("create product")
+    @DisplayName("create product")
+    @Feature("Products")
+    @Tag("Regression")
     @Test
     public void createProduct(){
         requestFactory.createProduct().then().log().all();
     }
 
+    @Category({Regression.class})
+    @Story("create product")
+    @DisplayName("upload product image")
+    @Feature("Products")
+    @Tag("Regression")
     @Test
     public void uploadImage(){
 
@@ -88,6 +130,11 @@ public class ProductTests extends BaseClass {
         requestFactory.uploadProductImage(productId).then().log().all();
     }
 
+    @Category({Regression.class, Smoke.class})
+    @Story("create product review")
+    @DisplayName("create product review")
+    @Feature("Review")
+    @Tag("Regression, Smoke")
     @Test
     public void createProductReview(){
         String productId = requestFactory.createProduct().then().statusCode(200).log().all().extract().path("_id").toString();
@@ -112,6 +159,11 @@ public class ProductTests extends BaseClass {
 
     }
 
+    @Category({Regression.class})
+    @Story("update product")
+    @DisplayName("update product")
+    @Feature("Product")
+    @Tag("Regression")
     @Test
     public void updateProduct(){
         Product product = new Product();
@@ -134,6 +186,11 @@ public class ProductTests extends BaseClass {
         requestFactory.updateProduct(productId, jsonInString).then().log().all();
     }
 
+    @Category({Regression.class})
+    @Story("delete product ")
+    @DisplayName("delete product ")
+    @Feature("Product")
+    @Tag("Regression")
     @Test
     public void deleteProduct() {
 
