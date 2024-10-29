@@ -21,15 +21,20 @@ public class UserTests extends BaseClass {
     UserRequestFactory requestFactory = new UserRequestFactory();
 
     @Category({Smoke.class, Regression.class})
-    @Story("get routes for microservice")
-    @DisplayName("Test Name")
-    @Feature("Feature name")
+    @Story("create user")
+    @DisplayName("create user")
+    @Feature("User")
     @Tag("Regression,Smoke")
     @Test
     public void createUser(){
         requestFactory.registerUserEshop().then().log().all();
     }
 
+    @Category({Smoke.class, Regression.class})
+    @Story("update user profile")
+    @DisplayName("update user profile")
+    @Feature("User")
+    @Tag("Regression,Smoke")
     @Test
     public void updateUserProfile(){
 
@@ -45,18 +50,33 @@ public class UserTests extends BaseClass {
 
     }
 
+    @Category({Smoke.class, Regression.class})
+    @Story("get user profile")
+    @DisplayName("get user profile")
+    @Feature("User")
+    @Tag("Regression,Smoke")
     @Test
     public void getUserProfile(){
         requestFactory.getUserProfile().then().statusCode(200).log().all();
 
     }
 
+    @Category({Regression.class})
+    @Story("get users")
+    @DisplayName("get users")
+    @Feature("User")
+    @Tag("Regression")
     @Test
     public void getUsers()
     {
         requestFactory.getUsers().then().log().all();
     }
 
+    @Category({Regression.class})
+    @Story("get user by Id")
+    @DisplayName("get user by Id")
+    @Feature("User")
+    @Tag("Regression")
     @Test
     public void getUsersById(){
         String userId = "1";
@@ -65,6 +85,11 @@ public class UserTests extends BaseClass {
     }
 
     // update user vs update profile, you can change isAdmin, email, name
+    @Category({Regression.class})
+    @Story("update user")
+    @DisplayName("update user")
+    @Feature("User")
+    @Tag("Regression")
     @Test
     public void updateUser(){
 
@@ -94,6 +119,11 @@ public class UserTests extends BaseClass {
 
     }
 
+    @Category({Regression.class})
+    @Story("delete user")
+    @DisplayName("delete user")
+    @Feature("User")
+    @Tag("Regression")
     @Test
     public void deleteUser(){
 
