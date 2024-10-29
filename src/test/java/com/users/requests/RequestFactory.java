@@ -7,6 +7,7 @@ import com.users.pojo.User;
 import com.users.tests.ProductsBaseClass;
 import io.qameta.allure.Step;
 import io.restassured.RestAssured;
+import io.restassured.http.ContentType;
 import io.restassured.response.Response;
 
 
@@ -107,7 +108,13 @@ public class RequestFactory extends ProductsBaseClass {
     public Response updateUserProfile(String user_token, String newEmail, String newPassword){
          String bodyString ="{\"name\":\"Marko Pavlicicc\",\"email\":\"" + newEmail + "\",\"password\":\"" + newPassword + "\"}";
 
-        return restClient.doPutRequest("/users/profile/update/", bodyString);
+
+        return  RestAssured.given().header("Authorization", "Bearer "+ user_token)
+                .contentType(ContentType.JSON)
+                //.spec(SpecificationFactory.logPayloadResponseInfo())
+                .when()
+                .body(bodyString)
+                .put("/users/profile/update/");
     }
 
     public Response getUserProfile(){

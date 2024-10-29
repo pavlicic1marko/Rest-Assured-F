@@ -74,7 +74,7 @@ public class UserTests extends ProductsBaseClass {
         System.out.println("user id is:" + userId);
 
 
-        //update user, email and TODO set isAdmin to True
+        //update user, email and admin status
         User user = new User();
         Faker fakerApi = new Faker();
         String username = fakerApi.name().firstName();
@@ -97,8 +97,6 @@ public class UserTests extends ProductsBaseClass {
     @Test
     public void deleteUser(){
 
-        Faker faker = new Faker();
-        String newEmail = faker.name().username() + "@test.com";
 
         //create user
         String userId =  requestFactory.registerUserEshop().then().extract().path("id").toString();
