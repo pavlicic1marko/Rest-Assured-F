@@ -1,10 +1,10 @@
 package com.users.tests.orders;
 
 import com.users.requests.factory.OrdersRequestFactory;
-import com.users.tests.ProductsBaseClass;
+import com.users.tests.BaseClass;
 import org.junit.Test;
 
-public class OrdersTests extends ProductsBaseClass {
+public class OrdersTests extends BaseClass {
 
     OrdersRequestFactory requestFactory = new OrdersRequestFactory();
 

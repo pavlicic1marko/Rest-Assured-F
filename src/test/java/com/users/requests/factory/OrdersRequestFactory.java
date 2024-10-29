@@ -1,10 +1,10 @@
 package com.users.requests.factory;
 
 import com.users.requests.RestClient;
-import com.users.tests.ProductsBaseClass;
+import com.users.tests.BaseClass;
 import io.restassured.response.Response;
 
-public class OrdersRequestFactory extends ProductsBaseClass {
+public class OrdersRequestFactory extends BaseClass {
 
     RestClient restClient = new RestClient();
 

@@ -5,7 +5,7 @@ import com.fasterxml.jackson.databind.ObjectMapper;
 import com.github.javafaker.Faker;
 import com.users.pojo.User;
 import com.users.requests.RestClient;
-import com.users.tests.ProductsBaseClass;
+import com.users.tests.BaseClass;
 import io.qameta.allure.Step;
 import io.restassured.RestAssured;
 import io.restassured.http.ContentType;
@@ -13,7 +13,7 @@ import io.restassured.response.Response;
 
 import static com.users.constants.Constants.UrlConstants.REGISTER_URL;
 
-public class UserRequestFactory extends ProductsBaseClass {
+public class UserRequestFactory extends BaseClass {
 
     RestClient restClient = new RestClient();
 

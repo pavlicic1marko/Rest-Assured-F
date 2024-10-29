@@ -7,7 +7,7 @@ import com.users.pojo.User;
 import com.users.requests.factory.UserRequestFactory;
 import com.users.tags.Regression;
 import com.users.tags.Smoke;
-import com.users.tests.ProductsBaseClass;
+import com.users.tests.BaseClass;
 import io.qameta.allure.Feature;
 import io.qameta.allure.Story;
 import io.qameta.allure.junit4.DisplayName;
@@ -16,7 +16,7 @@ import org.junit.Test;
 import org.junit.experimental.categories.Category;
 
 
-public class UserTests extends ProductsBaseClass {
+public class UserTests extends BaseClass {
 
     UserRequestFactory requestFactory = new UserRequestFactory();
 

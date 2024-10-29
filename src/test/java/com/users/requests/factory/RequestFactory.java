@@ -1,14 +1,14 @@
 package com.users.requests.factory;
 
 import com.users.requests.RestClient;
-import com.users.tests.ProductsBaseClass;
+import com.users.tests.BaseClass;
 import io.qameta.allure.Step;
 import io.restassured.RestAssured;
 import io.restassured.response.Response;
 
 import java.io.File;
 
-public class ProductsRequestFactory extends ProductsBaseClass {
+public class RequestFactory extends BaseClass {
 
     RestClient restClient = new RestClient();
 

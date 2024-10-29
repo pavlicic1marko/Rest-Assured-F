@@ -1,13 +1,13 @@
 package com.users.requests;
 
 import com.users.specs.SpecificationFactory;
-import com.users.tests.ProductsBaseClass;
+import com.users.tests.BaseClass;
 import io.restassured.RestAssured;
 import io.restassured.http.ContentType;
 import io.restassured.response.Response;
 
 
-public class RestClient extends ProductsBaseClass {
+public class RestClient extends BaseClass {
 
 
 
