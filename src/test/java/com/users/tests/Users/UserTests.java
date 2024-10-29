@@ -4,7 +4,7 @@ import com.fasterxml.jackson.core.JsonProcessingException;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import com.github.javafaker.Faker;
 import com.users.pojo.User;
-import com.users.requests.RequestFactory;
+import com.users.requests.factory.UserRequestFactory;
 import com.users.tags.Regression;
 import com.users.tags.Smoke;
 import com.users.tests.ProductsBaseClass;
@@ -18,7 +18,7 @@ import org.junit.experimental.categories.Category;
 
 public class UserTests extends ProductsBaseClass {
 
-    RequestFactory requestFactory = new RequestFactory();
+    UserRequestFactory requestFactory = new UserRequestFactory();
 
     @Category({Smoke.class, Regression.class})
     @Story("get routes for microservice")

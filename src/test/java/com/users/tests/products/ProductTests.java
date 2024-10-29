@@ -4,14 +4,14 @@ import com.fasterxml.jackson.core.JsonProcessingException;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import com.users.pojo.Product;
 import com.users.pojo.Review;
-import com.users.requests.RequestFactory;
+import com.users.requests.factory.ProductsRequestFactory;
 import com.users.tests.ProductsBaseClass;
 import org.junit.Test;
 
 
 public class ProductTests extends ProductsBaseClass {
 
-    RequestFactory requestFactory = new RequestFactory();
+    ProductsRequestFactory requestFactory = new ProductsRequestFactory();
     /** creating second review should not be possible, negative testing*/
     @Test
     public void createTwoReviewsBySameUser(){
