@@ -5,13 +5,26 @@ import com.fasterxml.jackson.databind.ObjectMapper;
 import com.github.javafaker.Faker;
 import com.users.pojo.User;
 import com.users.requests.RequestFactory;
+import com.users.tags.Regression;
+import com.users.tags.Smoke;
 import com.users.tests.ProductsBaseClass;
+import io.qameta.allure.Feature;
+import io.qameta.allure.Story;
+import io.qameta.allure.junit4.DisplayName;
+import io.qameta.allure.junit4.Tag;
 import org.junit.Test;
+import org.junit.experimental.categories.Category;
 
 
 public class UserTests extends ProductsBaseClass {
 
     RequestFactory requestFactory = new RequestFactory();
+
+    @Category({Smoke.class, Regression.class})
+    @Story("get routes for microservice")
+    @DisplayName("Test Name")
+    @Feature("Feature name")
+    @Tag("Regression,Smoke")
     @Test
     public void createUser(){
         requestFactory.registerUserEshop().then().log().all();
