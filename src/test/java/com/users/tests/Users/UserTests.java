@@ -57,7 +57,7 @@ public class UserTests extends BaseClass {
     @Tag("Regression,Smoke")
     @Test
     public void getUserProfile(){
-        requestFactory.getUserProfile().then().statusCode(200).log().all();
+        requestFactory.getUserProfile().then().log().all().statusCode(200);
 
     }
 
@@ -69,7 +69,7 @@ public class UserTests extends BaseClass {
     @Test
     public void getUsers()
     {
-        requestFactory.getUsers().then().log().all();
+        requestFactory.getUsers().then().log().all().statusCode(200);
     }
 
     @Category({Regression.class})
@@ -80,7 +80,7 @@ public class UserTests extends BaseClass {
     @Test
     public void getUsersById(){
         String userId = "1";
-        requestFactory.getUsersById(userId).then().log().all();
+        requestFactory.getUsersById(userId).then().log().all().statusCode(200);
 
     }
 
@@ -95,7 +95,7 @@ public class UserTests extends BaseClass {
 
 
         //create user
-        String userId =  requestFactory.registerUserEshop().then().extract().path("id").toString();
+        String userId =  requestFactory.registerUserEshop().then().log().all().statusCode(200).extract().path("id").toString();
         System.out.println("user id is:" + userId);
 
 
@@ -129,11 +129,11 @@ public class UserTests extends BaseClass {
 
 
         //create user
-        String userId =  requestFactory.registerUserEshop().then().extract().path("id").toString();
+        String userId =  requestFactory.registerUserEshop().then().statusCode(200).extract().path("id").toString();
         System.out.println("user id is:" + userId);
 
         //delete user
-        requestFactory.deleteUser(userId).then().statusCode(200).log().all();
+        requestFactory.deleteUser(userId).then().log().all().statusCode(200);
 
 
     }

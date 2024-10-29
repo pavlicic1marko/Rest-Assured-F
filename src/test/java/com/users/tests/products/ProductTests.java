@@ -28,7 +28,7 @@ public class ProductTests extends BaseClass {
     @Test
     public void createTwoReviewsBySameUser(){
         //create product
-        String productId = requestFactory.createProduct().then().statusCode(200).log().all().extract().path("_id").toString();
+        String productId = requestFactory.createProduct().then().log().all().statusCode(200).extract().path("_id").toString();
 
         //create first review
         String jsonInString;
@@ -42,7 +42,7 @@ public class ProductTests extends BaseClass {
         } catch (JsonProcessingException e) {
             throw new RuntimeException(e);
         }
-        requestFactory.createProductReview(productId, jsonInString).then().statusCode(200).log().all();
+        requestFactory.createProductReview(productId, jsonInString).then().log().all().statusCode(200);
 
         //try to create second review
         String jsonInStringReview2;
@@ -56,7 +56,7 @@ public class ProductTests extends BaseClass {
             throw new RuntimeException(e);
         }
 
-        requestFactory.createProductReview(productId, jsonInStringReview2).then().statusCode(400).log().all();
+        requestFactory.createProductReview(productId, jsonInStringReview2).then().log().all().statusCode(400);
     }
 
 
@@ -67,7 +67,7 @@ public class ProductTests extends BaseClass {
     @Tag("Regression")
     @Test
     public void getAllProducts(){
-        requestFactory.getAllProducts().then().log().all();
+        requestFactory.getAllProducts().then().log().all().statusCode(200);
     }
 
     @Category({Regression.class})
@@ -78,7 +78,7 @@ public class ProductTests extends BaseClass {
     @Test
     public void getProductById(){
         String productId = "6";
-        requestFactory.getProductById(productId).then().log().all();
+        requestFactory.getProductById(productId).then().log().all().statusCode(200);
     }
 
     @Category({Regression.class})
@@ -88,7 +88,7 @@ public class ProductTests extends BaseClass {
     @Tag("Regression")
     @Test
     public void getTopProducts(){
-        requestFactory.getTopProducts().then().log().all();
+        requestFactory.getTopProducts().then().log().all().statusCode(200);
     }
 
     /**
@@ -103,7 +103,7 @@ public class ProductTests extends BaseClass {
     public void getProductsByKeyword(){
         String keyword = "mouse";
         String page= "1";
-        requestFactory.getProductsByKeyword(keyword, page).then().log().all();
+        requestFactory.getProductsByKeyword(keyword, page).then().log().all().statusCode(200);
     }
 
     @Category({Regression.class})
@@ -113,7 +113,7 @@ public class ProductTests extends BaseClass {
     @Tag("Regression")
     @Test
     public void createProduct(){
-        requestFactory.createProduct().then().log().all();
+        requestFactory.createProduct().then().log().all().statusCode(200);
     }
 
     @Category({Regression.class})
@@ -124,7 +124,7 @@ public class ProductTests extends BaseClass {
     @Test
     public void uploadImage(){
 
-        int productId = requestFactory.createProduct().then().statusCode(200).log().all().extract().path("_id");
+        int productId = requestFactory.createProduct().then().log().all().statusCode(200).extract().path("_id");
 
 
         requestFactory.uploadProductImage(productId).then().log().all();
@@ -137,7 +137,7 @@ public class ProductTests extends BaseClass {
     @Tag("Regression, Smoke")
     @Test
     public void createProductReview(){
-        String productId = requestFactory.createProduct().then().statusCode(200).log().all().extract().path("_id").toString();
+        String productId = requestFactory.createProduct().then().log().all().statusCode(200).extract().path("_id").toString();
 
         String jsonInString;
         Review review = new Review();
@@ -172,7 +172,7 @@ public class ProductTests extends BaseClass {
         product.setCategory("new Category");
         product.setDescription("new Description");
 
-        String productId = requestFactory.createProduct().then().statusCode(200).log().all().extract().path("_id").toString();
+        String productId = requestFactory.createProduct().then().log().all().statusCode(200).extract().path("_id").toString();
 
         String jsonInString;
 
@@ -194,9 +194,9 @@ public class ProductTests extends BaseClass {
     @Test
     public void deleteProduct() {
 
-        String productId = requestFactory.createProduct().then().statusCode(200).log().all().extract().path("_id").toString();
+        String productId = requestFactory.createProduct().then().log().all().statusCode(200).extract().path("_id").toString();
 
-        requestFactory.getProductById(productId).then().statusCode(200);
+        requestFactory.getProductById(productId).then().log().all().statusCode(200);
 
         requestFactory.deleteProduct(productId).then().log().all().statusCode(200);
     }
