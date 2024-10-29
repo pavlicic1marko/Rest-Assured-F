@@ -13,7 +13,7 @@ public class RestClient extends ProductsBaseClass {
 
     public Response doGetRequest(String requestPath){
 
-        return RestAssured.given().header("Authorization", "Bearer "+ access_token)
+        return RestAssured.given().header("Authorization", "Bearer "+ getToken())
                 .spec(SpecificationFactory.logPayloadResponseInfo())
                 .when()
                 .get(requestPath);

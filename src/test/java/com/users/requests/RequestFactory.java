@@ -130,6 +130,33 @@ public class RequestFactory extends ProductsBaseClass {
         return  restClient.doDeleteRequest("/users/delete/" + userId + "/");
     }
 
+    //Order requests
+
+    public Response getOrders(){
+        return restClient.doGetRequest("/orders/");
+    }
+
+    public Response getOrderById(String orderID) {
+        return restClient.doGetRequest("/orders/" + orderID + "/");
+    }
+
+    public Response addOrder(String orderJson) {
+        return restClient.doPostRequest(orderJson,"/orders/add/");
+    }
+
+    public Response getMyOrders(){
+        return restClient.doGetRequest("/orders/myorders/");
+    }
+
+    public Response updateOrderToPayed(String orderId){
+        return restClient.doPutRequest("/orders/" + orderId  + "/pay/","");
+    }
+
+    public Response updateOrderToDelevired(String orderId){
+        return restClient.doPutRequest("/orders/" + orderId  + "/deliver/","");
+    }
+
+
 
 /*
     @Step("get all student information")
