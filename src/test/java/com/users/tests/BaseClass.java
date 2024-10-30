@@ -21,6 +21,9 @@ public class BaseClass {
     public String getAdminToken(){
 
         credentialsProp = UserCredentialsReader.getInstance();
+        String AdminUserName =credentialsProp.getProperty("AdminUserName");
+        String AdminPassword =credentialsProp.getProperty("AdminPassword");
+
 
 
         return RestAssured.given().header("Content-Type","application/json")
@@ -28,6 +31,21 @@ public class BaseClass {
                     .when()
                     .post("http://127.0.0.1:8000/api/users/login/").then().body("$",hasKey("access"))
                     .extract().path("token");
+
+    }
+
+    public String getToken(){
+
+        credentialsProp = UserCredentialsReader.getInstance();
+        String userName =credentialsProp.getProperty("UserName");
+        String password =credentialsProp.getProperty("Password");
+
+
+        return RestAssured.given().header("Content-Type","application/json")
+                .body("{\"username\":\"Jerrellupdated@test.com\",\"password\":\"Posao2018!\"}")
+                .when()
+                .post("http://127.0.0.1:8000/api/users/login/").then().body("$",hasKey("access"))
+                .extract().path("token");
 
     }
     @Rule
