@@ -38,14 +38,6 @@ public class RestClient extends BaseClass {
                 .delete(path);
     }
 
-    public Response doPatchRequest(String path, Object body){
-
-        return RestAssured
-                .given()
-                .when()
-                .body(body)
-                .patch(path);
-    }
 
     public Response doPostRequest(String body, String path){
         return RestAssured
