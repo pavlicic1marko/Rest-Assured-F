@@ -42,7 +42,7 @@ public class BaseClass {
 
 
         return RestAssured.given().header("Content-Type","application/json")
-                .body("{\"username\":\"Jerrellupdated@test.com\",\"password\":\"Posao2018!\"}")
+                .body("{\"username\":\"pavlicicmarko1223@yahoo.com\t\",\"password\":\"Posao2018!\"}")
                 .when()
                 .post("http://127.0.0.1:8000/api/users/login/").then().body("$",hasKey("access"))
                 .extract().path("token");
