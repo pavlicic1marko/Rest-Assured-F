@@ -65,6 +65,10 @@ public class UserRequestFactory extends BaseClass {
         return restClient.doGetRequestWitAdminCredentials("/users/" + userId + "/");
     }
 
+    public Response getUsersByIdWithRegularCredentials(String userId){
+        return restClient.doGetRequestWitRegularCredentials("/users/" + userId + "/");
+    }
+
     public Response updateUser(String body, String userId){
         return restClient.doPutRequestWithAdminCredentials("/users/update/" + userId + "/", body);
     }

@@ -37,8 +37,8 @@ public class BaseClass {
     public String getToken(){
 
         credentialsProp = UserCredentialsReader.getInstance();
-        String userName =credentialsProp.getProperty("UserName");
-        String password =credentialsProp.getProperty("Password");
+        String userName =credentialsProp.getProperty("userName");
+        String password =credentialsProp.getProperty("password");
 
 
         return RestAssured.given().header("Content-Type","application/json")

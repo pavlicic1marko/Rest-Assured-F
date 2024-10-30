@@ -19,6 +19,14 @@ public class RestClient extends BaseClass {
                 .get(requestPath);
     }
 
+    public Response doGetRequestWitRegularCredentials(String requestPath){
+
+        return RestAssured.given().header("Authorization", "Bearer "+ getToken())
+                .spec(SpecificationFactory.logPayloadResponseInfo())
+                .when()
+                .get(requestPath);
+    }
+
     public Response doPutRequestWithAdminCredentials(String path, Object body){
 
         return RestAssured.given().header("Authorization", "Bearer "+ getAdminToken())
