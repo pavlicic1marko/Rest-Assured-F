@@ -13,7 +13,7 @@ public class RestClient extends BaseClass {
 
     public Response doGetRequest(String requestPath){
 
-        return RestAssured.given().header("Authorization", "Bearer "+ getToken())
+        return RestAssured.given().header("Authorization", "Bearer "+ getAdminToken())
                 .spec(SpecificationFactory.logPayloadResponseInfo())
                 .when()
                 .get(requestPath);
@@ -21,7 +21,7 @@ public class RestClient extends BaseClass {
 
     public Response doPutRequest(String path, Object body){
 
-        return RestAssured.given().header("Authorization", "Bearer "+ getToken())
+        return RestAssured.given().header("Authorization", "Bearer "+ getAdminToken())
                 .contentType(ContentType.JSON)
                //.spec(SpecificationFactory.logPayloadResponseInfo())
                 .when()
@@ -33,7 +33,7 @@ public class RestClient extends BaseClass {
 
         return RestAssured
                 .given()
-                .header("Authorization","Bearer " + getToken())
+                .header("Authorization","Bearer " + getAdminToken())
                 .when()
                 .delete(path);
     }
@@ -50,7 +50,7 @@ public class RestClient extends BaseClass {
     public Response doPostRequest(String body, String path){
         return RestAssured
                 .given().header("Content-Type","application/json")
-                .header("Authorization","Bearer " + getToken())
+                .header("Authorization","Bearer " + getAdminToken())
                 .when()
                 .body(body)
                 .post(path);

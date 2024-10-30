@@ -26,7 +26,7 @@ public class ProductsRequestFactory extends BaseClass {
                 .given().contentType("multipart/form-data")
                 .multiPart("product_id", productId)
                 .multiPart("image", inputFileImage)
-                .header("Authorization","Bearer " + getToken())
+                .header("Authorization","Bearer " + getAdminToken())
                 .when()
                 .post("/products/upload/");
     }

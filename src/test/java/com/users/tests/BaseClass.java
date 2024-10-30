@@ -17,9 +17,8 @@ public class BaseClass {
 
     public static PropertyReader prop;
     public static UserCredentialsReader credentialsProp;
-    public String access_token = getToken();
 
-    public String getToken(){
+    public String getAdminToken(){
 
         credentialsProp = UserCredentialsReader.getInstance();
 
