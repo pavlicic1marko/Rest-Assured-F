@@ -1,27 +1,15 @@
 package com.users.tests;
 
 
-import com.github.javafaker.Faker;
-import com.users.requests.RequestFactory;
-import com.users.specs.SpecificationFactory;
-import com.users.tags.Regression;
-import com.users.tags.Smoke;
-import io.qameta.allure.Feature;
 import io.qameta.allure.Story;
-import io.qameta.allure.junit4.DisplayName;
-import io.qameta.allure.junit4.Tag;
-import org.junit.Test;
-import org.junit.experimental.categories.Category;
 
-import static org.hamcrest.Matchers.equalTo;
 import static org.hamcrest.Matchers.hasKey;
 
 
 @Story("get routes for microservice")
-public class UserTest extends  ProductsBaseClass{
+public class UserTest extends BaseClass {
     /*
 
-    RequestFactory requestFactory = new RequestFactory();
 
     @Category({Smoke.class, Regression.class})
     @Story("get routes for microservice")

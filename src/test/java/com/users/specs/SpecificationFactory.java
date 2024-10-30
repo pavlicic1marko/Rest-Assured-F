@@ -1,5 +1,5 @@
 package com.users.specs;
-import com.users.tests.ProductsBaseClass;
+import com.users.tests.BaseClass;
 import com.users.util.PropertyReader;
 import io.qameta.allure.restassured.AllureRestAssured;
 import io.restassured.builder.RequestSpecBuilder;
@@ -13,7 +13,7 @@ import java.util.Objects;
 import static org.hamcrest.Matchers.lessThan;
 
 
-public class SpecificationFactory extends ProductsBaseClass {
+public class SpecificationFactory extends BaseClass {
 
 
     public static synchronized ResponseSpecification getGenericResponseSpec(){
