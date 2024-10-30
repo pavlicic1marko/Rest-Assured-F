@@ -57,6 +57,7 @@ public class UserTests extends BaseClass {
                         "username",equalTo(newEmail)
                         ,"$",hasKey("_id")
                         ,"$",hasKey("id")
+                        ,"$",hasKey("isAdmin")
                         ,"$",hasKey("token"));
 
     }
