@@ -15,6 +15,8 @@ import io.qameta.allure.junit4.Tag;
 import org.junit.Test;
 import org.junit.experimental.categories.Category;
 
+import static org.hamcrest.CoreMatchers.equalTo;
+
 
 public class UserTests extends BaseClass {
 
@@ -47,7 +49,7 @@ public class UserTests extends BaseClass {
         System.out.println("user token is:" + user_token);
 
         //update user
-        requestFactory.updateUserProfile(user_token, newEmail, "12345678!", newName).then().log().all();
+        requestFactory.updateUserProfile(user_token, newEmail, "12345678!", newName).then().log().all().statusCode(200).body("email",equalTo(newEmail));
 
     }
 
