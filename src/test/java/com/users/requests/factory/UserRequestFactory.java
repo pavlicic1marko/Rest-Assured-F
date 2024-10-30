@@ -61,6 +61,10 @@ public class UserRequestFactory extends BaseClass {
         return restClient.doGetRequestWitAdminCredentials("/users/");
     }
 
+    public Response getUsersWithRegularCredentials(){
+        return restClient.doGetRequestWitRegularCredentials("/users/");
+    }
+
     public Response getUsersById(String userId){
         return restClient.doGetRequestWitAdminCredentials("/users/" + userId + "/");
     }
@@ -77,6 +81,9 @@ public class UserRequestFactory extends BaseClass {
         return  restClient.doDeleteRequestWithAdminCredentials("/users/delete/" + userId + "/");
     }
 
+    public Response deleteUserWithRegularCredentials(String userId){
+        return  restClient.doDeleteRequestWithRegularCredentials("/users/delete/" + userId + "/");
+    }
 
 
 }

@@ -11,6 +11,7 @@ import org.junit.Assert;
 import org.junit.Test;
 import org.junit.experimental.categories.Category;
 
+//test endpoints without  admin permissions but with regular user credentials, expect 403
 public class UserPermissionsTests extends BaseClass {
 
     UserRequestFactory userRequestFactory = new UserRequestFactory();
@@ -27,5 +28,33 @@ public class UserPermissionsTests extends BaseClass {
         Assert.assertEquals("{\"detail\":\"You do not have permission to perform this action.\"}",responseBody);
     }
 
+    @Category({Regression.class})
+    @Story("get users")
+    @DisplayName("get users with regular user credentials, 403")
+    @Feature("User")
+    @Tag("Regression")
+    @Test
+    public void getUsers()
+    {
+        userRequestFactory.getUsersWithRegularCredentials().then().log().all().statusCode(403);
+    }
 
+    @Category({Regression.class})
+    @Story("delete user")
+    @DisplayName("try to delete user with regular credentials")
+    @Feature("User")
+    @Tag("Regression")
+    @Test
+    public void deleteUser(){
+
+
+        //create user
+        String userId =  userRequestFactory.registerUserEshop().then().statusCode(200).extract().path("id").toString();
+        System.out.println("user id is:" + userId);
+
+        //delete user
+        userRequestFactory.deleteUserWithRegularCredentials(userId).then().log().all().statusCode(403);
+
+
+    }
 }

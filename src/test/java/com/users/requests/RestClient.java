@@ -46,6 +46,15 @@ public class RestClient extends BaseClass {
                 .delete(path);
     }
 
+    public Response doDeleteRequestWithRegularCredentials(String path){
+
+        return RestAssured
+                .given()
+                .header("Authorization","Bearer " + getToken())
+                .when()
+                .delete(path);
+    }
+
 
     public Response doPostRequestWithAdminCredentials(String body, String path){
         return RestAssured
