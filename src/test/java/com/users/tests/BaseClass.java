@@ -21,13 +21,13 @@ public class BaseClass {
     public String getAdminToken(){
 
         credentialsProp = UserCredentialsReader.getInstance();
-        String AdminUserName =credentialsProp.getProperty("AdminUserName");
-        String AdminPassword =credentialsProp.getProperty("AdminPassword");
+        String adminUserName =credentialsProp.getProperty("AdminUserName");
+        String adminPassword =credentialsProp.getProperty("AdminPassword");
 
 
 
         return RestAssured.given().header("Content-Type","application/json")
-                    .body("{\"username\":\"Jerrellupdated@test.com\",\"password\":\"Posao2018!\"}")
+                .body("{\"username\":\"" + adminUserName + "\",\"password\":\"" + adminPassword + "\"}")
                     .when()
                     .post("http://127.0.0.1:8000/api/users/login/").then().body("$",hasKey("access"))
                     .extract().path("token");
@@ -42,7 +42,7 @@ public class BaseClass {
 
 
         return RestAssured.given().header("Content-Type","application/json")
-                .body("{\"username\":\"pavlicicmarko1223@yahoo.com\t\",\"password\":\"Posao2018!\"}")
+                .body("{\"username\":\"" + userName + "\",\"password\":\"" + password + "\"}")
                 .when()
                 .post("http://127.0.0.1:8000/api/users/login/").then().body("$",hasKey("access"))
                 .extract().path("token");
