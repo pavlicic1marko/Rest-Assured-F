@@ -8,7 +8,7 @@ import io.restassured.response.Response;
 
 import java.io.File;
 
-public class RequestFactory extends BaseClass {
+public class ProductsRequestFactory extends BaseClass {
 
     RestClient restClient = new RestClient();
 
@@ -30,6 +30,14 @@ public class RequestFactory extends BaseClass {
                 .when()
                 .post("/products/upload/");
     }
+    @Step("Download product image")
+    public byte[] downloadProductImage(String imageUrl){
+        return restClient.doGetRequest("http://127.0.0.1:8000" + imageUrl)
+                .then().log().headers()
+                .statusCode(200)
+                .extract().body().asByteArray();
+    }
+
 
     @Step("Create product review")
     public Response createProductReview(String productId, String reviewJson){
