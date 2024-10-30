@@ -14,7 +14,7 @@ public class ProductsRequestFactory extends BaseClass {
 
     @Step("create product")
     public Response createProduct(){
-        return  restClient.doPostRequest("","/products/create/");
+        return  restClient.doPostRequestWithAdminCredentials("","/products/create/");
     }
 
     @Step("Upload product image")
@@ -32,7 +32,7 @@ public class ProductsRequestFactory extends BaseClass {
     }
     @Step("Download product image")
     public byte[] downloadProductImage(String imageUrl){
-        return restClient.doGetRequest("http://127.0.0.1:8000" + imageUrl)
+        return restClient.doGetRequestWitAdminCredentials("http://127.0.0.1:8000" + imageUrl)
                 .then().log().headers()
                 .statusCode(200)
                 .extract().body().asByteArray();
@@ -41,39 +41,39 @@ public class ProductsRequestFactory extends BaseClass {
 
     @Step("Create product review")
     public Response createProductReview(String productId, String reviewJson){
-        return restClient.doPostRequest(reviewJson,"/products/" + productId + "/reviews/");
+        return restClient.doPostRequestWithAdminCredentials(reviewJson,"/products/" + productId + "/reviews/");
     }
 
     @Step("update product")
     public Response updateProduct(String productId, String body){
-        return restClient.doPutRequest("/products/update/" + productId + "/",body);
+        return restClient.doPutRequestWithAdminCredentials("/products/update/" + productId + "/",body);
     }
 
     @Step("delete product")
     public Response deleteProduct(String id){
 
-        return restClient.doDeleteRequest("/products/delete/" + id + "/");
+        return restClient.doDeleteRequestWithAdminCredentials("/products/delete/" + id + "/");
     }
 
 
     @Step("get all products")
     public Response getAllProducts(){
-        return restClient.doGetRequest("/products");
+        return restClient.doGetRequestWitAdminCredentials("/products");
 
     }
 
     @Step("get product by ID")
     public Response getProductById(String productId){
-        return restClient.doGetRequest("/products/" + productId);
+        return restClient.doGetRequestWitAdminCredentials("/products/" + productId);
     }
 
     @Step("get top products")
     public Response getTopProducts(){
-        return restClient.doGetRequest("/products/top/");
+        return restClient.doGetRequestWitAdminCredentials("/products/top/");
     }
 
     @Step("get products by keywords")
     public Response getProductsByKeyword(String keyword, String page){
-        return restClient.doGetRequest("/products/?keyword=" + keyword + "&page=" +page);
+        return restClient.doGetRequestWitAdminCredentials("/products/?keyword=" + keyword + "&page=" +page);
     }
 }

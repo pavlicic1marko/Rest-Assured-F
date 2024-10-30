@@ -11,7 +11,7 @@ public class RestClient extends BaseClass {
 
 
 
-    public Response doGetRequest(String requestPath){
+    public Response doGetRequestWitAdminCredentials(String requestPath){
 
         return RestAssured.given().header("Authorization", "Bearer "+ getAdminToken())
                 .spec(SpecificationFactory.logPayloadResponseInfo())
@@ -19,7 +19,7 @@ public class RestClient extends BaseClass {
                 .get(requestPath);
     }
 
-    public Response doPutRequest(String path, Object body){
+    public Response doPutRequestWithAdminCredentials(String path, Object body){
 
         return RestAssured.given().header("Authorization", "Bearer "+ getAdminToken())
                 .contentType(ContentType.JSON)
@@ -29,7 +29,7 @@ public class RestClient extends BaseClass {
                 .put(path);
     }
 
-    public Response doDeleteRequest(String path){
+    public Response doDeleteRequestWithAdminCredentials(String path){
 
         return RestAssured
                 .given()
@@ -39,7 +39,7 @@ public class RestClient extends BaseClass {
     }
 
 
-    public Response doPostRequest(String body, String path){
+    public Response doPostRequestWithAdminCredentials(String body, String path){
         return RestAssured
                 .given().header("Content-Type","application/json")
                 .header("Authorization","Bearer " + getAdminToken())
