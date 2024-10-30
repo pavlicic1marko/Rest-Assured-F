@@ -146,9 +146,7 @@ public class ProductTests extends BaseClass {
         String productIdWithImage = String.valueOf(productId);
         String imageUrl = productsRequestFactory.getProductById(productIdWithImage).then().log().all().statusCode(200).extract().path("image"); //get image url
 
-        byte[] fileDownloaded =  RestAssured.given()
-                .get("http://127.0.0.1:8000" + imageUrl)
-                .then().statusCode(200).log().headers().extract().body().asByteArray();
+        byte[] fileDownloaded =  productsRequestFactory.downloadProductImage(imageUrl);
 
         File inputFileImage = new File(imagePath);
         byte[] byteArrayOfLocalImage = new byte[(int) inputFileImage.length()];
