@@ -17,6 +17,11 @@ public class ProductsRequestFactory extends BaseClass {
         return  restClient.doPostRequestWithAdminCredentials("","/products/create/");
     }
 
+    @Step("create product")
+    public Response createProductWithRegularCredentials(){
+        return  restClient.doPostRequestWithRegularCredentials("","/products/create/");
+    }
+
     @Step("Upload product image")
     public Response uploadProductImage(int productId, String imagePathLocation){
 
@@ -49,10 +54,21 @@ public class ProductsRequestFactory extends BaseClass {
         return restClient.doPutRequestWithAdminCredentials("/products/update/" + productId + "/",body);
     }
 
+    @Step("update product")
+    public Response updateProductWithRegularCredentials(String productId, String body){
+        return restClient.doPutRequestWithRegularCredentials("/products/update/" + productId + "/",body);
+    }
+
     @Step("delete product")
     public Response deleteProduct(String id){
 
         return restClient.doDeleteRequestWithAdminCredentials("/products/delete/" + id + "/");
+    }
+
+    @Step("delete product")
+    public Response deleteProductWithRegularCredentials(String id){
+
+        return restClient.doDeleteRequestWithRegularCredentials("/products/delete/" + id + "/");
     }
 
 

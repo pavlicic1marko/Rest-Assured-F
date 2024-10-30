@@ -12,6 +12,10 @@ public class OrdersRequestFactory extends BaseClass {
         return restClient.doGetRequestWitAdminCredentials("/orders/");
     }
 
+    public Response getOrdersWithRegularCredentials(){
+        return restClient.doGetRequestWitRegularCredentials("/orders/");
+    }
+
     public Response getOrderById(String orderID) {
         return restClient.doGetRequestWitAdminCredentials("/orders/" + orderID + "/");
     }
@@ -30,6 +34,10 @@ public class OrdersRequestFactory extends BaseClass {
 
     public Response updateOrderToDelevired(String orderId){
         return restClient.doPutRequestWithAdminCredentials("/orders/" + orderId  + "/deliver/","");
+    }
+
+    public Response updateOrderToDeleviredWithRegularCredentials(String orderId){
+        return restClient.doPutRequestWithRegularCredentials("/orders/" + orderId  + "/deliver/","");
     }
 
 

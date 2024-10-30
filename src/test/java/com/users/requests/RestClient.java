@@ -37,6 +37,16 @@ public class RestClient extends BaseClass {
                 .put(path);
     }
 
+    public Response doPutRequestWithRegularCredentials(String path, Object body){
+
+        return RestAssured.given().header("Authorization", "Bearer "+ getToken())
+                .contentType(ContentType.JSON)
+                //.spec(SpecificationFactory.logPayloadResponseInfo())
+                .when()
+                .body(body)
+                .put(path);
+    }
+
     public Response doDeleteRequestWithAdminCredentials(String path){
 
         return RestAssured
@@ -60,6 +70,15 @@ public class RestClient extends BaseClass {
         return RestAssured
                 .given().header("Content-Type","application/json")
                 .header("Authorization","Bearer " + getAdminToken())
+                .when()
+                .body(body)
+                .post(path);
+    }
+
+    public Response doPostRequestWithRegularCredentials(String body, String path){
+        return RestAssured
+                .given().header("Content-Type","application/json")
+                .header("Authorization","Bearer " + getToken())
                 .when()
                 .body(body)
                 .post(path);
