@@ -125,11 +125,11 @@ public class ProductTests extends BaseClass {
         productsRequestFactory.createProduct().then().log().all().statusCode(200);
     }
 
-    @Category({Regression.class})
+    @Category({Smoke.class})
     @Story("create product")
     @DisplayName("upload product image")
     @Feature("Products")
-    @Tag("Regression")
+    @Tag("smoke")
     @Test
     public void uploadImage(){
 
