@@ -18,9 +18,9 @@ public class RequestFactory extends BaseClass {
     }
 
     @Step("Upload product image")
-    public Response uploadProductImage(int productId){
+    public Response uploadProductImage(int productId, String imagePathLocation){
 
-        File inputFileImage = new File("src/main/resources/sega-mega.jpg");
+        File inputFileImage = new File(imagePathLocation);
 
         return RestAssured
                 .given().contentType("multipart/form-data")

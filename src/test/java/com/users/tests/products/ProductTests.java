@@ -12,8 +12,17 @@ import io.qameta.allure.Feature;
 import io.qameta.allure.Story;
 import io.qameta.allure.junit4.DisplayName;
 import io.qameta.allure.junit4.Tag;
+import io.restassured.RestAssured;
 import org.junit.Test;
 import org.junit.experimental.categories.Category;
+
+import java.io.File;
+import java.io.FileInputStream;
+import java.io.FileNotFoundException;
+import java.io.IOException;
+import java.util.Arrays;
+
+import static org.junit.Assert.assertTrue;
 
 
 public class ProductTests extends BaseClass {
@@ -124,10 +133,36 @@ public class ProductTests extends BaseClass {
     @Test
     public void uploadImage(){
 
+
+        String imagePath="src/main/resources/sega-mega.jpg"; //image to upload
+
+        //create product
         int productId = requestFactory.createProduct().then().log().all().statusCode(200).extract().path("_id");
 
+        //upload image
+        requestFactory.uploadProductImage(productId, imagePath).then().log().all().statusCode(200);
 
-        requestFactory.uploadProductImage(productId).then().log().all();
+        //downloadImage and check
+        String productIdWithImage = String.valueOf(productId);
+        String imageUrl = requestFactory.getProductById(productIdWithImage).then().log().all().statusCode(200).extract().path("image"); //get image url
+
+        byte[] fileDownloaded =  RestAssured.given()
+                .get("http://127.0.0.1:8000" + imageUrl)
+                .then().statusCode(200).log().headers().extract().body().asByteArray();
+
+        File inputFileImage = new File(imagePath);
+        byte[] byteArrayOfLocalImage = new byte[(int) inputFileImage.length()];
+        try (FileInputStream inputStream = new FileInputStream(inputFileImage)) {
+            inputStream.read(byteArrayOfLocalImage);
+        } catch (FileNotFoundException e) {
+            throw new RuntimeException(e);
+        } catch (IOException e) {
+            throw new RuntimeException(e);
+        }
+
+        assertTrue(Arrays.equals(byteArrayOfLocalImage, fileDownloaded));
+
+
     }
 
     @Category({Regression.class, Smoke.class})
