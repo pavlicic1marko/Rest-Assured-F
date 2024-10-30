@@ -4,8 +4,14 @@ import com.tngtech.java.junit.dataprovider.DataProvider;
 import com.tngtech.java.junit.dataprovider.DataProviderRunner;
 import com.tngtech.java.junit.dataprovider.UseDataProvider;
 import com.users.requests.factory.ProductsRequestFactory;
+import com.users.tags.Regression;
 import com.users.tests.BaseClass;
+import io.qameta.allure.Feature;
+import io.qameta.allure.Story;
+import io.qameta.allure.junit4.DisplayName;
+import io.qameta.allure.junit4.Tag;
 import org.junit.Test;
+import org.junit.experimental.categories.Category;
 import org.junit.runner.RunWith;
 
 import java.io.File;
@@ -31,7 +37,11 @@ public class ImageFileFormatTests extends BaseClass {
                 "src/main/resources/images/Transformer.jpg"};
     }
 
-
+    @Category(Regression.class)
+    @Story("Product Images")
+    @DisplayName("Upload all image formats")
+    @Feature("Product")
+    @Tag("Regression")
     @UseDataProvider("getImagesForUploadPaths")
     @Test
     public void testAllSupportedImageFormats(String imagePath){
