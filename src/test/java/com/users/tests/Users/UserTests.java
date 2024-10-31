@@ -15,6 +15,7 @@ import io.qameta.allure.junit4.Tag;
 import org.junit.Test;
 import org.junit.experimental.categories.Category;
 
+import static com.users.util.JosnSerializer.serializeObjectToJson;
 import static org.hamcrest.CoreMatchers.equalTo;
 import static org.hamcrest.Matchers.hasKey;
 
@@ -120,13 +121,9 @@ public class UserTests extends BaseClass {
         user.setEmail(username + "updated@test.com");
         user.setIsAdmin(true);
         ObjectMapper mapper = new ObjectMapper();
-        String jsonInString;
-        try {
-            jsonInString = mapper.writeValueAsString(user);
-        } catch (JsonProcessingException e) {
-            throw new RuntimeException(e);
 
-        }
+        String jsonInString = serializeObjectToJson(user);
+
         requestFactory.updateUser(jsonInString, userId).then().log().all().statusCode(200);
 
     }
