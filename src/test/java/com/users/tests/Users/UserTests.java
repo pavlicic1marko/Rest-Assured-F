@@ -42,16 +42,25 @@ public class UserTests extends BaseClass {
     @Test
     public void updateUserProfile(){
 
-        Faker faker = new Faker();
-        String newName = faker.name().username();
-        String newEmail = faker.name().username() + "@test.com";
 
-        //create user
+
+        //create user, get token
         String user_token =  requestFactory.registerUserEshop().then().extract().path("token");
-        System.out.println("user token is:" + user_token);
 
         //update user
-        requestFactory.updateUserProfile(user_token, newEmail, "12345678!", newName)
+
+        Faker faker = new Faker();
+        String newName = faker.name().username();
+        String newEmail = faker.name().username() + "updated@test.com";
+
+        User user = new User();
+        user.setEmail(newEmail);
+        user.setName(newName);
+        user.setPassword("Posao2018!");
+
+        String jsonBody = serializeObjectToJson(user);
+
+        requestFactory.updateUserProfile(user_token,  jsonBody)
                 .then().log().all()
                 .statusCode(200)
                 .body("email",equalTo(newEmail),
@@ -113,14 +122,13 @@ public class UserTests extends BaseClass {
 
 
         //update user, email and admin status
-        User user = new User();
         Faker fakerApi = new Faker();
         String username = fakerApi.name().firstName();
 
+        User user = new User();
         user.setName(username);
         user.setEmail(username + "updated@test.com");
         user.setIsAdmin(true);
-        ObjectMapper mapper = new ObjectMapper();
 
         String jsonInString = serializeObjectToJson(user);
 

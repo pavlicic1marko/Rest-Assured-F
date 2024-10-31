@@ -41,15 +41,15 @@ public class UserRequestFactory extends BaseClass {
         return restClient.doPostRequestWithAdminCredentials(jsonInString, REGISTER_URL);
     }
 
-    public Response updateUserProfile(String user_token, String newEmail, String newPassword, String newName){
-        String bodyString ="{\"name\":\""+ newName +"\",\"email\":\"" + newEmail + "\",\"password\":\"" + newPassword + "\"}";
+    @Step("Update user profile")
+    public Response updateUserProfile(String user_token, String jsonBody){
 
 
         return  RestAssured.given().header("Authorization", "Bearer "+ user_token)
                 .contentType(ContentType.JSON)
                 //.spec(SpecificationFactory.logPayloadResponseInfo())
                 .when()
-                .body(bodyString)
+                .body(jsonBody)
                 .put(USER_PROFILE_UPDATE);
     }
 
