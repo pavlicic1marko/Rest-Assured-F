@@ -5,6 +5,7 @@ import com.fasterxml.jackson.databind.ObjectMapper;
 import com.github.javafaker.Faker;
 import com.users.pojo.User;
 import com.users.requests.factory.UserRequestFactory;
+import com.users.specs.SpecificationFactory;
 import com.users.tags.Regression;
 import com.users.tags.Smoke;
 import com.users.tests.BaseClass;
@@ -79,7 +80,7 @@ public class UserTests extends BaseClass {
     @Tag("Regression,Smoke")
     @Test
     public void getUserProfile(){
-        requestFactory.getUserProfile().then().log().all().statusCode(200);
+        requestFactory.getUserProfile().then().log().all().spec(SpecificationFactory.getStatusCode200());
 
     }
 
