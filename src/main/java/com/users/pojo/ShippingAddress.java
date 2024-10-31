@@ -1,6 +1,6 @@
 package com.users.pojo;
 
-public class Address {
+public class ShippingAddress {
     public String address;
     public String city;
     public String postalCode;

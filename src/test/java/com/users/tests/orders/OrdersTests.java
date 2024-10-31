@@ -1,5 +1,8 @@
 package com.users.tests.orders;
 
+import com.github.javafaker.Faker;
+import com.users.pojo.ShippingAddress;
+import com.users.pojo.Order;
 import com.users.requests.factory.OrdersRequestFactory;
 import com.users.tags.Regression;
 import com.users.tags.Smoke;
@@ -35,6 +38,16 @@ public class OrdersTests extends BaseClass {
     @Tag("Regression, Smoke")
     @Test
     public void addOrder(){
+        Order orders = new  Order();
+        ShippingAddress address = new ShippingAddress();
+        Faker fakerApi = new Faker();
+
+        address.setCity(fakerApi.address().city());
+        address.setCountry(fakerApi.address().country());
+        address.setPostalCode(fakerApi.address().zipCode());
+        address.setAddress(fakerApi.address().streetAddress());
+
+
         String order ="{\"orderItems\":[{\"product\":6,\"name\":\"Amazon Echo Dot 3rd Generation\",\"image\":\"/images/alexa.jpg\",\"price\":\"29.99\",\"countInStock\":1,\"qty\":1}],\"shippingAddress\":{\"address\":\"Radnicka 38/46\",\"city\":\"Beograd\",\"postalCode\":\"11030\",\"country\":\"Serbia\"},\"paymentMethod\":\"PayPal\",\"itemsPrice\":\"29.99\",\"shippingPrice\":\"10.00\",\"taxPrice\":\"2.46\",\"totalPrice\":\"42.45\"}";
         requestFactory.addOrder(order).then().log().all().statusCode(200);
     }
