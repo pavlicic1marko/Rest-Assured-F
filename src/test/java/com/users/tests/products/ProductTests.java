@@ -12,7 +12,6 @@ import io.qameta.allure.Feature;
 import io.qameta.allure.Story;
 import io.qameta.allure.junit4.DisplayName;
 import io.qameta.allure.junit4.Tag;
-import io.restassured.RestAssured;
 import org.junit.Test;
 import org.junit.experimental.categories.Category;
 
@@ -216,7 +215,7 @@ public class ProductTests extends BaseClass {
             throw new RuntimeException(e);
         }
 
-        productsRequestFactory.updateProduct(productId, jsonInString).then().log().all();
+        productsRequestFactory.updateProduct(productId, jsonInString).then().log().all().statusCode(200);
     }
 
     @Category({Regression.class})

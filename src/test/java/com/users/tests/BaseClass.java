@@ -17,18 +17,35 @@ public class BaseClass {
 
     public static PropertyReader prop;
     public static UserCredentialsReader credentialsProp;
-    public String access_token = getToken();
+
+    public String getAdminToken(){
+
+        credentialsProp = UserCredentialsReader.getInstance();
+        String adminUserName =credentialsProp.getProperty("AdminUserName");
+        String adminPassword =credentialsProp.getProperty("AdminPassword");
+
+
+
+        return RestAssured.given().header("Content-Type","application/json")
+                .body("{\"username\":\"" + adminUserName + "\",\"password\":\"" + adminPassword + "\"}")
+                    .when()
+                    .post("http://127.0.0.1:8000/api/users/login/").then().body("$",hasKey("access"))
+                    .extract().path("token");
+
+    }
 
     public String getToken(){
 
         credentialsProp = UserCredentialsReader.getInstance();
+        String userName =credentialsProp.getProperty("userName");
+        String password =credentialsProp.getProperty("password");
 
 
         return RestAssured.given().header("Content-Type","application/json")
-                    .body("{\"username\":\"Jerrellupdated@test.com\",\"password\":\"Posao2018!\"}")
-                    .when()
-                    .post("http://127.0.0.1:8000/api/users/login/").then().body("$",hasKey("access"))
-                    .extract().path("token");
+                .body("{\"username\":\"" + userName + "\",\"password\":\"" + password + "\"}")
+                .when()
+                .post("http://127.0.0.1:8000/api/users/login/").then().body("$",hasKey("access"))
+                .extract().path("token");
 
     }
     @Rule

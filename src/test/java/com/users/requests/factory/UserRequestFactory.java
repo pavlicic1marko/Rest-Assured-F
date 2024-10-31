@@ -38,7 +38,7 @@ public class UserRequestFactory extends BaseClass {
         }
 
 
-        return restClient.doPostRequest(jsonInString, REGISTER_URL);
+        return restClient.doPostRequestWithAdminCredentials(jsonInString, REGISTER_URL);
     }
 
     public Response updateUserProfile(String user_token, String newEmail, String newPassword, String newName){
@@ -54,25 +54,36 @@ public class UserRequestFactory extends BaseClass {
     }
 
     public Response getUserProfile(){
-        return restClient.doGetRequest("/users/profile/");
+        return restClient.doGetRequestWitAdminCredentials("/users/profile/");
     }
 
     public Response getUsers(){
-        return restClient.doGetRequest("/users/");
+        return restClient.doGetRequestWitAdminCredentials("/users/");
+    }
+
+    public Response getUsersWithRegularCredentials(){
+        return restClient.doGetRequestWitRegularCredentials("/users/");
     }
 
     public Response getUsersById(String userId){
-        return restClient.doGetRequest("/users/" + userId + "/");
+        return restClient.doGetRequestWitAdminCredentials("/users/" + userId + "/");
+    }
+
+    public Response getUsersByIdWithRegularCredentials(String userId){
+        return restClient.doGetRequestWitRegularCredentials("/users/" + userId + "/");
     }
 
     public Response updateUser(String body, String userId){
-        return restClient.doPutRequest("/users/update/" + userId + "/", body);
+        return restClient.doPutRequestWithAdminCredentials("/users/update/" + userId + "/", body);
     }
 
     public Response deleteUser(String userId){
-        return  restClient.doDeleteRequest("/users/delete/" + userId + "/");
+        return  restClient.doDeleteRequestWithAdminCredentials("/users/delete/" + userId + "/");
     }
 
+    public Response deleteUserWithRegularCredentials(String userId){
+        return  restClient.doDeleteRequestWithRegularCredentials("/users/delete/" + userId + "/");
+    }
 
 
 }

@@ -9,27 +9,35 @@ public class OrdersRequestFactory extends BaseClass {
     RestClient restClient = new RestClient();
 
     public Response getOrders(){
-        return restClient.doGetRequest("/orders/");
+        return restClient.doGetRequestWitAdminCredentials("/orders/");
+    }
+
+    public Response getOrdersWithRegularCredentials(){
+        return restClient.doGetRequestWitRegularCredentials("/orders/");
     }
 
     public Response getOrderById(String orderID) {
-        return restClient.doGetRequest("/orders/" + orderID + "/");
+        return restClient.doGetRequestWitAdminCredentials("/orders/" + orderID + "/");
     }
 
     public Response addOrder(String orderJson) {
-        return restClient.doPostRequest(orderJson,"/orders/add/");
+        return restClient.doPostRequestWithAdminCredentials(orderJson,"/orders/add/");
     }
 
     public Response getMyOrders(){
-        return restClient.doGetRequest("/orders/myorders/");
+        return restClient.doGetRequestWitAdminCredentials("/orders/myorders/");
     }
 
     public Response updateOrderToPayed(String orderId){
-        return restClient.doPutRequest("/orders/" + orderId  + "/pay/","");
+        return restClient.doPutRequestWithAdminCredentials("/orders/" + orderId  + "/pay/","");
     }
 
     public Response updateOrderToDelevired(String orderId){
-        return restClient.doPutRequest("/orders/" + orderId  + "/deliver/","");
+        return restClient.doPutRequestWithAdminCredentials("/orders/" + orderId  + "/deliver/","");
+    }
+
+    public Response updateOrderToDeleviredWithRegularCredentials(String orderId){
+        return restClient.doPutRequestWithRegularCredentials("/orders/" + orderId  + "/deliver/","");
     }
 
 
