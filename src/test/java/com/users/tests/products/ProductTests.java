@@ -21,6 +21,7 @@ import java.io.FileNotFoundException;
 import java.io.IOException;
 import java.util.Arrays;
 
+import static com.users.util.JosnSerializer.serializeObjectToJson;
 import static org.hamcrest.CoreMatchers.equalTo;
 import static org.hamcrest.Matchers.hasKey;
 import static org.junit.Assert.assertTrue;
@@ -179,17 +180,13 @@ public class ProductTests extends BaseClass {
     public void createProductReview(){
         String productId = productsRequestFactory.createProduct().then().log().all().statusCode(200).extract().path("_id").toString();
 
-        String jsonInString;
         Review review = new Review();
         review.setComment("this is a test comment");
         review.setRating("5");
 
-        ObjectMapper mapper = new ObjectMapper();
-        try {
-            jsonInString = mapper.writeValueAsString(review);
-        } catch (JsonProcessingException e) {
-            throw new RuntimeException(e);
-        }
+
+        String jsonInString = serializeObjectToJson(review);
+
 
 
         productsRequestFactory.createProductReview(productId, jsonInString).then().log().all();
@@ -214,14 +211,9 @@ public class ProductTests extends BaseClass {
 
         String productId = productsRequestFactory.createProduct().then().log().all().statusCode(200).extract().path("_id").toString();
 
-        String jsonInString;
+        String jsonInString=serializeObjectToJson(product);
 
-        ObjectMapper mapper = new ObjectMapper();
-        try {
-            jsonInString = mapper.writeValueAsString(product);
-        } catch (JsonProcessingException e) {
-            throw new RuntimeException(e);
-        }
+
 
         productsRequestFactory.updateProduct(productId, jsonInString).then().log().all().statusCode(200);
     }
