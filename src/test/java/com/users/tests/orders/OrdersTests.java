@@ -56,7 +56,10 @@ public class OrdersTests extends BaseClass {
     @Tag("Regression, Smoke")
     @Test
     public void updateOrdersToPayed(){
-        String orderId ="33";
+
+        String order ="{\"orderItems\":[{\"product\":6,\"name\":\"Amazon Echo Dot 3rd Generation\",\"image\":\"/images/alexa.jpg\",\"price\":\"29.99\",\"countInStock\":1,\"qty\":1}],\"shippingAddress\":{\"address\":\"Radnicka 38/46\",\"city\":\"Beograd\",\"postalCode\":\"11030\",\"country\":\"Serbia\"},\"paymentMethod\":\"PayPal\",\"itemsPrice\":\"29.99\",\"shippingPrice\":\"10.00\",\"taxPrice\":\"2.46\",\"totalPrice\":\"42.45\"}";
+        String orderId = requestFactory.addOrder(order).then().log().all().statusCode(200).extract().path("_id").toString();
+
         requestFactory.updateOrderToPayed(orderId).then().log().all().statusCode(200);
     }
 
