@@ -91,7 +91,7 @@ public class UserTests extends BaseClass {
     @Tag("Regression")
     @Test
     public void getUsersById(){
-        String userId = "1";
+        String userId = "10";
         requestFactory.getUsersById(userId).then().log().all().statusCode(200);
 
     }
