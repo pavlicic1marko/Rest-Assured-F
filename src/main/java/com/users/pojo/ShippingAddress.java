@@ -5,7 +5,6 @@ public class ShippingAddress {
     public String city;
     public String postalCode;
     public String country;
-    public int shippingPrice;
 
 
     public String getAddress() {
@@ -40,11 +39,4 @@ public class ShippingAddress {
         this.country = country;
     }
 
-    public int getShippingPrice() {
-        return shippingPrice;
-    }
-
-    public void setShippingPrice(int shippingPrice) {
-        this.shippingPrice = shippingPrice;
-    }
 }
