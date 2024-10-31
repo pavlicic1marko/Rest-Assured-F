@@ -21,6 +21,8 @@ import java.io.FileNotFoundException;
 import java.io.IOException;
 import java.util.Arrays;
 
+import static org.hamcrest.CoreMatchers.equalTo;
+import static org.hamcrest.Matchers.hasKey;
 import static org.junit.Assert.assertTrue;
 
 
@@ -86,7 +88,13 @@ public class ProductTests extends BaseClass {
     @Test
     public void getProductById(){
         String productId = "6";
-        productsRequestFactory.getProductById(productId).then().log().all().statusCode(200);
+        productsRequestFactory.getProductById(productId).then().log().all().statusCode(200)
+                .body(
+                "$",hasKey("_id")
+                ,"$",hasKey("reviews")
+                ,"$",hasKey("image")
+                ,"$",hasKey("brand")
+                ,"$",hasKey("category"));
     }
 
     @Category({Regression.class})

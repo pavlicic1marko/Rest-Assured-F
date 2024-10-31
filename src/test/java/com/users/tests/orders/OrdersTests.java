@@ -11,6 +11,8 @@ import io.qameta.allure.junit4.Tag;
 import org.junit.Test;
 import org.junit.experimental.categories.Category;
 
+import static org.hamcrest.Matchers.hasKey;
+
 public class OrdersTests extends BaseClass {
 
     OrdersRequestFactory requestFactory = new OrdersRequestFactory();
@@ -66,7 +68,12 @@ public class OrdersTests extends BaseClass {
     @Test
     public void getOrderById(){
         String orderId ="12";
-        requestFactory.getOrderById(orderId).then().log().all().statusCode(200);
+        requestFactory.getOrderById(orderId).then().log().all().statusCode(200).body(
+                "$",hasKey("_id")
+                ,"$",hasKey("name")
+                ,"$",hasKey("qty")
+                ,"$",hasKey("price")
+                ,"$",hasKey("image"));;
     }
 
     @Category({Regression.class})
