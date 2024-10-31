@@ -22,4 +22,9 @@ public class Constants {
 
     }
 
+
+    public static class ErrorMessages{
+        public static final String ERROR_403_MESSAGE = "{\"detail\"=\"You do not have permission to perform this action.\"}";
+    }
+
 }
