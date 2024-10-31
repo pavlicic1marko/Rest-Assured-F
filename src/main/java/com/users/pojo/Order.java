@@ -2,7 +2,7 @@ package com.users.pojo;
 
 import java.util.List;
 
-public class Orders {
+public class Order {
     private Address shippingAddress ;
     private List<Product>  orderItems;
     private String paymentMethod= "PayPal";
