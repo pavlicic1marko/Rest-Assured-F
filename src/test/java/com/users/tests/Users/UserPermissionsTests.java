@@ -11,6 +11,8 @@ import org.junit.Assert;
 import org.junit.Test;
 import org.junit.experimental.categories.Category;
 
+import static com.users.constants.Constants.ErrorMessages.ERROR_403_MESSAGE;
+
 //test endpoints without  admin permissions but with regular user credentials, expect 403
 public class UserPermissionsTests extends BaseClass {
 
@@ -25,7 +27,7 @@ public class UserPermissionsTests extends BaseClass {
     public void getUsersById(){
         String userId = "1";
         String responseBody = userRequestFactory.getUsersByIdWithRegularCredentials(userId).then().log().all().statusCode(403).extract().response().body().asString();
-        Assert.assertEquals("{\"detail\":\"You do not have permission to perform this action.\"}",responseBody);
+        Assert.assertEquals(ERROR_403_MESSAGE,responseBody);
     }
 
     @Category({Regression.class})
