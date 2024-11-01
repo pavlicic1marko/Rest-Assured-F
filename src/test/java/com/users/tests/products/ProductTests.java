@@ -185,7 +185,7 @@ public class ProductTests extends BaseClass {
 
 
 
-        productsRequestFactory.createProductReview(productId, jsonInString).then().log().all();
+        productsRequestFactory.createProductReview(productId, jsonInString).then().log().all().statusCode(200);
 
 
 
