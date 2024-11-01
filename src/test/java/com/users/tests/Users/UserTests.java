@@ -1,7 +1,5 @@
 package com.users.tests.Users;
 
-import com.fasterxml.jackson.core.JsonProcessingException;
-import com.fasterxml.jackson.databind.ObjectMapper;
 import com.github.javafaker.Faker;
 import com.users.pojo.User;
 import com.users.requests.factory.UserRequestFactory;
@@ -16,7 +14,12 @@ import io.qameta.allure.junit4.Tag;
 import org.junit.Test;
 import org.junit.experimental.categories.Category;
 
+
+
+
+
 import static com.users.util.JosnSerializer.serializeObjectToJson;
+import static io.restassured.module.jsv.JsonSchemaValidator.matchesJsonSchemaInClasspath;
 import static org.hamcrest.CoreMatchers.equalTo;
 import static org.hamcrest.Matchers.hasKey;
 
@@ -103,7 +106,8 @@ public class UserTests extends BaseClass {
     @Test
     public void getUsersById(){
         String userId = "10";
-        requestFactory.getUsersById(userId).then().log().all().statusCode(200);
+        requestFactory.getUsersById(userId).then().log().all().statusCode(200)
+                .body(matchesJsonSchemaInClasspath("GetUserSchema"));
 
     }
 

@@ -30,25 +30,36 @@
         <type>pom</type>
         <scope>import</scope>
       </dependency>
+
       <dependency>
         <groupId>junit</groupId>
         <artifactId>junit</artifactId>
         <version>4.13.2</version>
       </dependency>
     </dependencies>
+
   </dependencyManagement>
 
   <dependencies>
+
+    <dependency>
+      <groupId>io.rest-assured</groupId>
+      <artifactId>json-schema-validator</artifactId>
+      <version>5.5.0</version>
+    </dependency>
+
     <dependency>
       <groupId>io.qameta.allure</groupId>
       <artifactId>allure-junit4</artifactId>
       <scope>test</scope>
     </dependency>
+
     <dependency>
       <groupId>io.qameta.allure</groupId>
       <artifactId>allure-junit4-aspect</artifactId>
       <scope>test</scope>
     </dependency>
+
     <dependency>
       <groupId>junit</groupId>
       <artifactId>junit</artifactId>
