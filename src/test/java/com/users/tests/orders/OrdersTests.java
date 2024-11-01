@@ -104,13 +104,13 @@ public class OrdersTests extends BaseClass {
     @Tag("Regression")
     @Test
     public void getOrderById(){
-        String orderId ="12";
+        String orderId ="13";
         requestFactory.getOrderById(orderId).then().log().all().statusCode(200).body(
-                "$",hasKey("_id")
-                ,"$",hasKey("name")
-                ,"$",hasKey("qty")
-                ,"$",hasKey("price")
-                ,"$",hasKey("image"));;
+                "$",hasKey("totalPrice")
+                ,"$",hasKey("isDelivered")
+                ,"$",hasKey("createdAt")
+                ,"$",hasKey("paymentMethod")
+                ,"$",hasKey("orderItems"));;
     }
 
     @Category({Regression.class})
