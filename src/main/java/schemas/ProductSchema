@@ -1,0 +1,55 @@
+{
+  "$schema": "http://json-schema.org/draft-07/schema#",
+  "type": "object",
+  "properties": {
+    "_id": { "type": "integer" },
+    "reviews": {
+      "oneOf": [
+        { "type": "null"},
+        {
+          "type": "array",
+          "items": {
+            "type": "object",
+            "properties": {
+              "_id": { "type": "integer" },
+              "name": { "type": "string" },
+              "rating": { "type": "integer" },
+              "comment": { "type": "string" },
+              "createdAt": { "type": "string", "format": "date-time" },
+              "product": { "type": "integer" },
+              "user": { "type": "integer" }
+            },
+            "required": ["_id", "name", "rating", "comment", "createdAt", "product", "user"]
+          }
+        }
+      ]
+    },
+    "name": { "type": "string" },
+    "image": { "type": "string" },
+    "brand": { "type": "string" },
+    "category": { "type": "string" },
+    "description": { "type": "string" },
+    "rating": { "type": "string" },
+    "numReviews": { "type": "integer" },
+    "price": { "type": "string" },
+    "countInStock": { "type": "integer" },
+    "createdAt": { "type": "string", "format": "date-time" },
+    "user": { "type": ["integer","null"] }
+  },
+  "required": [
+    "_id",
+    "reviews",
+    "name",
+    "image",
+    "brand",
+    "category",
+    "description",
+    "rating",
+    "numReviews",
+    "price",
+    "countInStock",
+    "createdAt",
+    "user"
+  ]
+}
+

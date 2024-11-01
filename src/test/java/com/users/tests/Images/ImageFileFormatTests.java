@@ -70,6 +70,8 @@ public class ImageFileFormatTests extends BaseClass {
             throw new RuntimeException(e);
         }
 
+
+        //test that two arrays are equal
         assertTrue(Arrays.equals(byteArrayOfLocalImage, fileDownloaded));
 
     }
