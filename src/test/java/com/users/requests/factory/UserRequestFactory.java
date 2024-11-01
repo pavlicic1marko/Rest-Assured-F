@@ -11,7 +11,7 @@ import io.restassured.RestAssured;
 import io.restassured.http.ContentType;
 import io.restassured.response.Response;
 
-import static com.users.constants.Constants.UrlConstants.REGISTER_URL;
+import static com.users.constants.Constants.UrlConstants.*;
 
 public class UserRequestFactory extends BaseClass {
 
@@ -41,24 +41,24 @@ public class UserRequestFactory extends BaseClass {
         return restClient.doPostRequestWithAdminCredentials(jsonInString, REGISTER_URL);
     }
 
-    public Response updateUserProfile(String user_token, String newEmail, String newPassword, String newName){
-        String bodyString ="{\"name\":\""+ newName +"\",\"email\":\"" + newEmail + "\",\"password\":\"" + newPassword + "\"}";
+    @Step("Update user profile")
+    public Response updateUserProfile(String user_token, String jsonBody){
 
 
         return  RestAssured.given().header("Authorization", "Bearer "+ user_token)
                 .contentType(ContentType.JSON)
                 //.spec(SpecificationFactory.logPayloadResponseInfo())
                 .when()
-                .body(bodyString)
-                .put("/users/profile/update/");
+                .body(jsonBody)
+                .put(USER_PROFILE_UPDATE);
     }
 
     public Response getUserProfile(){
-        return restClient.doGetRequestWitAdminCredentials("/users/profile/");
+        return restClient.doGetRequestWitAdminCredentials(USER_PROFILE);
     }
 
     public Response getUsers(){
-        return restClient.doGetRequestWitAdminCredentials("/users/");
+        return restClient.doGetRequestWitAdminCredentials(USER);
     }
 
     public Response getUsersWithRegularCredentials(){
@@ -66,23 +66,23 @@ public class UserRequestFactory extends BaseClass {
     }
 
     public Response getUsersById(String userId){
-        return restClient.doGetRequestWitAdminCredentials("/users/" + userId + "/");
+        return restClient.doGetRequestWitAdminCredentials(USER + userId + "/");
     }
 
     public Response getUsersByIdWithRegularCredentials(String userId){
-        return restClient.doGetRequestWitRegularCredentials("/users/" + userId + "/");
+        return restClient.doGetRequestWitRegularCredentials(USER + userId + "/");
     }
 
     public Response updateUser(String body, String userId){
-        return restClient.doPutRequestWithAdminCredentials("/users/update/" + userId + "/", body);
+        return restClient.doPutRequestWithAdminCredentials(USER_UPDATE + userId + "/", body);
     }
 
     public Response deleteUser(String userId){
-        return  restClient.doDeleteRequestWithAdminCredentials("/users/delete/" + userId + "/");
+        return  restClient.doDeleteRequestWithAdminCredentials(USER_DELETE + userId + "/");
     }
 
     public Response deleteUserWithRegularCredentials(String userId){
-        return  restClient.doDeleteRequestWithRegularCredentials("/users/delete/" + userId + "/");
+        return  restClient.doDeleteRequestWithRegularCredentials(USER_DELETE + userId + "/");
     }
 
 

@@ -3,18 +3,39 @@ package com.users.pojo;
 public class Product {
     private String user;
     private String name;
-    private int price;
+    private String price;
     private String brand;
     private int countInStock;
     private String category;
     private String description;
+
+    public int getQty() {
+        return qty;
+    }
+
+    public void setQty(int qty) {
+        this.qty = qty;
+    }
+
+    private int qty;
+
+
+    public int getProduct() {
+        return product;
+    }
+
+    public void setProduct(int product) {
+        this.product = product;
+    }
+
+    private int product;
 
     // Default constructor
     public Product() {
     }
 
     // Constructor with parameters
-    public Product(String user, String name, int price, String brand, int countInStock, String category, String description) {
+    public Product(String user, String name, String price, String brand, int countInStock, String category, String description) {
         this.user = user;
         this.name = name;
         this.price = price;
@@ -22,6 +43,7 @@ public class Product {
         this.countInStock = countInStock;
         this.category = category;
         this.description = description;
+
     }
 
     // Getters and Setters
@@ -41,11 +63,11 @@ public class Product {
         this.name = name;
     }
 
-    public int getPrice() {
+    public String getPrice() {
         return price;
     }
 
-    public void setPrice(int price) {
+    public void setPrice(String price) {
         this.price = price;
     }
 

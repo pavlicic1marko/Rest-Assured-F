@@ -1,6 +1,7 @@
 package com.users.tests.orders;
 
 import com.users.requests.factory.OrdersRequestFactory;
+import com.users.specs.SpecificationFactory;
 import com.users.tags.Regression;
 import com.users.tests.BaseClass;
 import io.qameta.allure.Feature;
@@ -21,7 +22,7 @@ public class OrdersPermissionsTests extends BaseClass {
     @Tag("Regression")
     @Test
     public void getOrders(){
-        ordersRequestFactory.getOrdersWithRegularCredentials().then().log().all().statusCode(403);
+        ordersRequestFactory.getOrdersWithRegularCredentials().then().log().all().spec(SpecificationFactory.getStatusCode403());
     }
 
     @Category({Regression.class})

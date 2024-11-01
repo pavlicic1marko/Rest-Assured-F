@@ -1,5 +1,9 @@
 package com.users.tests.orders;
 
+import com.github.javafaker.Faker;
+import com.users.pojo.Product;
+import com.users.pojo.ShippingAddress;
+import com.users.pojo.Order;
 import com.users.requests.factory.OrdersRequestFactory;
 import com.users.tags.Regression;
 import com.users.tags.Smoke;
@@ -10,6 +14,9 @@ import io.qameta.allure.junit4.DisplayName;
 import io.qameta.allure.junit4.Tag;
 import org.junit.Test;
 import org.junit.experimental.categories.Category;
+
+import static com.users.util.JosnSerializer.serializeObjectToJson;
+import static org.hamcrest.Matchers.hasKey;
 
 public class OrdersTests extends BaseClass {
 
@@ -33,8 +40,37 @@ public class OrdersTests extends BaseClass {
     @Tag("Regression, Smoke")
     @Test
     public void addOrder(){
+        Order orders = new  Order();
+        Product product = new Product();
+        ShippingAddress address = new ShippingAddress();
+        Faker fakerApi = new Faker();
+
+
+        product.setName("test name");
+        product.setPrice("10");
+        product.setName("Amazon Echo Dot 3rd Generation");
+        product.setProduct(1);
+        product.setQty(1);
+
+
+        address.setCity(fakerApi.address().city());
+        address.setCountry(fakerApi.address().country());
+        address.setPostalCode(fakerApi.address().zipCode());
+        address.setAddress(fakerApi.address().streetAddress());
+
+        orders.setShippingAddress(address);
+        orders.setOrderItems(product);
+        orders.setPaymentMethod("PayPal");
+        orders.setShippingPrice("1");
+        orders.setItemsPrice("1");
+        orders.setTaxPrice("1");
+        orders.setTotalPrice("1");
+        orders.setCountInStock(1);
+
+        String orderJson = serializeObjectToJson(orders);
+
         String order ="{\"orderItems\":[{\"product\":6,\"name\":\"Amazon Echo Dot 3rd Generation\",\"image\":\"/images/alexa.jpg\",\"price\":\"29.99\",\"countInStock\":1,\"qty\":1}],\"shippingAddress\":{\"address\":\"Radnicka 38/46\",\"city\":\"Beograd\",\"postalCode\":\"11030\",\"country\":\"Serbia\"},\"paymentMethod\":\"PayPal\",\"itemsPrice\":\"29.99\",\"shippingPrice\":\"10.00\",\"taxPrice\":\"2.46\",\"totalPrice\":\"42.45\"}";
-        requestFactory.addOrder(order).then().log().all().statusCode(200);
+        requestFactory.addOrder(orderJson).then().log().all().statusCode(200);
     }
 
     @Category({Regression.class, Smoke.class})
@@ -54,7 +90,10 @@ public class OrdersTests extends BaseClass {
     @Tag("Regression, Smoke")
     @Test
     public void updateOrdersToPayed(){
-        String orderId ="33";
+
+        String order ="{\"orderItems\":[{\"product\":6,\"name\":\"Amazon Echo Dot 3rd Generation\",\"image\":\"/images/alexa.jpg\",\"price\":\"29.99\",\"countInStock\":1,\"qty\":1}],\"shippingAddress\":{\"address\":\"Radnicka 38/46\",\"city\":\"Beograd\",\"postalCode\":\"11030\",\"country\":\"Serbia\"},\"paymentMethod\":\"PayPal\",\"itemsPrice\":\"29.99\",\"shippingPrice\":\"10.00\",\"taxPrice\":\"2.46\",\"totalPrice\":\"42.45\"}";
+        String orderId = requestFactory.addOrder(order).then().log().all().statusCode(200).extract().path("_id").toString();
+
         requestFactory.updateOrderToPayed(orderId).then().log().all().statusCode(200);
     }
 
@@ -65,8 +104,13 @@ public class OrdersTests extends BaseClass {
     @Tag("Regression")
     @Test
     public void getOrderById(){
-        String orderId ="12";
-        requestFactory.getOrderById(orderId).then().log().all().statusCode(200);
+        String orderId ="13";
+        requestFactory.getOrderById(orderId).then().log().all().statusCode(200).body(
+                "$",hasKey("totalPrice")
+                ,"$",hasKey("isDelivered")
+                ,"$",hasKey("createdAt")
+                ,"$",hasKey("paymentMethod")
+                ,"$",hasKey("orderItems"));;
     }
 
     @Category({Regression.class})

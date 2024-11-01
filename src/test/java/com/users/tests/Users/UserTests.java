@@ -5,6 +5,7 @@ import com.fasterxml.jackson.databind.ObjectMapper;
 import com.github.javafaker.Faker;
 import com.users.pojo.User;
 import com.users.requests.factory.UserRequestFactory;
+import com.users.specs.SpecificationFactory;
 import com.users.tags.Regression;
 import com.users.tags.Smoke;
 import com.users.tests.BaseClass;
@@ -15,6 +16,7 @@ import io.qameta.allure.junit4.Tag;
 import org.junit.Test;
 import org.junit.experimental.categories.Category;
 
+import static com.users.util.JosnSerializer.serializeObjectToJson;
 import static org.hamcrest.CoreMatchers.equalTo;
 import static org.hamcrest.Matchers.hasKey;
 
@@ -41,16 +43,25 @@ public class UserTests extends BaseClass {
     @Test
     public void updateUserProfile(){
 
-        Faker faker = new Faker();
-        String newName = faker.name().username();
-        String newEmail = faker.name().username() + "@test.com";
 
-        //create user
+
+        //create user, get token
         String user_token =  requestFactory.registerUserEshop().then().extract().path("token");
-        System.out.println("user token is:" + user_token);
 
         //update user
-        requestFactory.updateUserProfile(user_token, newEmail, "12345678!", newName)
+
+        Faker faker = new Faker();
+        String newName = faker.name().username();
+        String newEmail = faker.name().username() + "updated@test.com";
+
+        User user = new User();
+        user.setEmail(newEmail);
+        user.setName(newName);
+        user.setPassword("Posao2018!");
+
+        String jsonBody = serializeObjectToJson(user);
+
+        requestFactory.updateUserProfile(user_token,  jsonBody)
                 .then().log().all()
                 .statusCode(200)
                 .body("email",equalTo(newEmail),
@@ -69,7 +80,7 @@ public class UserTests extends BaseClass {
     @Tag("Regression,Smoke")
     @Test
     public void getUserProfile(){
-        requestFactory.getUserProfile().then().log().all().statusCode(200);
+        requestFactory.getUserProfile().then().log().all().spec(SpecificationFactory.getStatusCode200());
 
     }
 
@@ -91,7 +102,7 @@ public class UserTests extends BaseClass {
     @Tag("Regression")
     @Test
     public void getUsersById(){
-        String userId = "1";
+        String userId = "10";
         requestFactory.getUsersById(userId).then().log().all().statusCode(200);
 
     }
@@ -112,21 +123,16 @@ public class UserTests extends BaseClass {
 
 
         //update user, email and admin status
-        User user = new User();
         Faker fakerApi = new Faker();
         String username = fakerApi.name().firstName();
 
+        User user = new User();
         user.setName(username);
         user.setEmail(username + "updated@test.com");
         user.setIsAdmin(true);
-        ObjectMapper mapper = new ObjectMapper();
-        String jsonInString;
-        try {
-            jsonInString = mapper.writeValueAsString(user);
-        } catch (JsonProcessingException e) {
-            throw new RuntimeException(e);
 
-        }
+        String jsonInString = serializeObjectToJson(user);
+
         requestFactory.updateUser(jsonInString, userId).then().log().all().statusCode(200);
 
     }

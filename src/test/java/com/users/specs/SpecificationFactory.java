@@ -30,6 +30,32 @@ public class SpecificationFactory extends BaseClass {
         return responseSpecification;
     }
 
+    public static synchronized ResponseSpecification getStatusCode200(){
+
+        ResponseSpecBuilder responseSpec;
+        ResponseSpecification responseSpecification;
+
+        responseSpec = new ResponseSpecBuilder();
+        responseSpec.expectStatusCode(200);
+
+        responseSpecification = responseSpec.build();
+
+        return responseSpecification;
+    }
+
+    public static synchronized ResponseSpecification getStatusCode403(){
+
+        ResponseSpecBuilder responseSpec;
+        ResponseSpecification responseSpecification;
+
+        responseSpec = new ResponseSpecBuilder();
+        responseSpec.expectStatusCode(403);
+
+        responseSpecification = responseSpec.build();
+
+        return responseSpecification;
+    }
+
 
     public static synchronized RequestSpecification logPayloadResponseInfo(){
         RequestSpecBuilder logBuilder;

@@ -13,6 +13,8 @@ import io.qameta.allure.junit4.Tag;
 import org.junit.Test;
 import org.junit.experimental.categories.Category;
 
+import static com.users.util.JosnSerializer.serializeObjectToJson;
+
 public class ProductsPermissionsTests extends BaseClass {
 
     ProductsRequestFactory productsRequestFactory = new ProductsRequestFactory();
@@ -37,14 +39,7 @@ public class ProductsPermissionsTests extends BaseClass {
 
         String productId = productsRequestFactory.createProduct().then().log().all().statusCode(200).extract().path("_id").toString();
 
-        String jsonInString;
-
-        ObjectMapper mapper = new ObjectMapper();
-        try {
-            jsonInString = mapper.writeValueAsString(product);
-        } catch (JsonProcessingException e) {
-            throw new RuntimeException(e);
-        }
+        String jsonInString= serializeObjectToJson(product);
 
         productsRequestFactory.updateProductWithRegularCredentials(productId, jsonInString).then().log().all().statusCode(403);
     }
