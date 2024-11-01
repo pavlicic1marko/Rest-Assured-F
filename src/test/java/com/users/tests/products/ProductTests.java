@@ -89,7 +89,7 @@ public class ProductTests extends BaseClass {
     @Tag("Regression")
     @Test
     public void getProductById(){
-        String productId = "6";
+        String productId = "40";
         productsRequestFactory.getProductById(productId).then().log().all().statusCode(200)
                 .body(matchesJsonSchemaInClasspath("ProductSchema"));
     }
